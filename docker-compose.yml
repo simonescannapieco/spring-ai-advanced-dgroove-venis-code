@@ -1,0 +1,65 @@
+x-common-variables: &spring-ai-common-variables
+  LOG_LEVEL: ${LOG_LEVEL:-WARNING}
+  QDRANT_HOST: ${QDRANT_HOST:-0.0.0.0}
+  QDRANT_PORT: ${QDRANT_PORT:-6333}
+
+services:
+  spring-ai-llm-gpu:
+    image: ollama/ollama:${OLLAMA_VERSION:-latest}
+    hostname: spring-ai-llm
+    container_name: spring_ai_llm
+    environment:
+      OLLAMA_HOST: "${OLLAMA_HOST:-0.0.0.0}:${OLLAMA_PORT-11434}"
+      OLLAMA_DEBUG: ${OLLAMA_DEBUG:-false}
+      OLLAMA_FLASH_ATTENTION: ${OLLAMA_FLASH_ATTENTION:-false}
+      OLLAMA_KEEP_ALIVE: ${OLLAMA_KEEP_ALIVE:-"5m"}
+      OLLAMA_MAX_LOADED_MODELS: ${OLLAMA_MAX_LOADED_MODELS:-1}
+      OLLAMA_NUM_PARALLEL: ${OLLAMA_NUM_PARALLEL:-1}
+    expose:
+      - ${OLLAMA_PORT:-11434}
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    volumes:
+      - spring_ai_llm:/root/.ollama
+    restart: unless-stopped
+    profiles: [llm-gpu]
+
+  spring-ai-llm-cpu:
+    image: ollama/ollama:${OLLAMA_VERSION:-latest}
+    hostname: spring-ai-llm
+    container_name: spring_ai_llm
+    environment:
+      OLLAMA_HOST: "${OLLAMA_HOST:-0.0.0.0}:${OLLAMA_PORT-11434}"
+      OLLAMA_DEBUG: ${OLLAMA_DEBUG:-false}
+      OLLAMA_FLASH_ATTENTION: ${OLLAMA_FLASH_ATTENTION:-false}
+      OLLAMA_KEEP_ALIVE: ${OLLAMA_KEEP_ALIVE:-"5m"}
+      OLLAMA_MAX_LOADED_MODELS: ${OLLAMA_MAX_LOADED_MODELS:-1}
+      OLLAMA_NUM_PARALLEL: ${OLLAMA_NUM_PARALLEL:-1}
+    expose:
+      - ${OLLAMA_PORT:-11434}
+    volumes:
+      - spring_ai_llm:/root/.ollama
+    restart: unless-stopped
+    profiles: [llm-cpu]
+
+  spring-ai-vector-memory:
+    image: qdrant/qdrant:${QDRANT_VERSION:-latest}
+    hostname: spring-ai-vector-memory
+    container_name: spring_ai_vector_memory
+    environment: *spring-ai-common-variables
+    expose:
+      - ${QDRANT_PORT:-6333}
+    volumes:
+      - spring_ai_vector:/qdrant/storage
+    restart: unless-stopped
+
+volumes:
+  spring_ai_llm:
+    name: spring_ai_llm
+  spring_ai_vector:
+    name: spring_ai_vector

@@ -1,0 +1,38 @@
+spring:
+    application:
+        name: demo
+    ai:
+        model:
+            embedding: ollama
+        ollama:
+            base-url: http://172.19.0.2:11434
+            init:
+                pull-model-strategy: when_missing
+                timeout: 15m
+                max-retries: 3 
+            chat:
+              options:
+                model: VitoF/llama-3.1-8b-italian
+                temperature: 0.2
+                top-k: 40
+                top-p: 0.9
+                repeat-penalty: 1.1 
+                presence-penalty: 1.0
+            embedding:
+                model: hf.co/Simone-Scannapieco/sentence-bert-base-italian-xxl-uncased-F32-GGUF
+        openai:
+            api-key: ${GOOGLE_AI_API_KEY}
+            base-url: https://generativelanguage.googleapis.com/v1beta/openai
+            chat:
+                completions-path: /chat/completions
+                options:
+                    model: gemini-2.0-flash-lite
+                    temperature: 2.0
+                    #top-p: .99
+                    #top-k: 30
+                    #max-tokens: 100  
+                    #max-completion-tokens: 100 
+                    #frequency-penalty: .2
+                    #presence-penalty: .2
+                    #stop-sequences:
+                    #- 3
