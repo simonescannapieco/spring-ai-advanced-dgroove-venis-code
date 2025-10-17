@@ -1,0 +1,69 @@
+{
+	"info": {
+		"_postman_id": "d998addb-bfd2-40fa-9b27-b663081a5881",
+		"name": "Spring AI - Corso avanzato",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "13237634"
+	},
+	"item": [
+		{
+			"name": "Test Ollama LLM",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"question\": \"Devo calcolare quanto tempo ci metti a rispondermi\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/client/ask",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"client",
+						"ask"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Test Ollama Embedder",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"model\": \"hf.co/Simone-Scannapieco/sentence-bert-base-italian-xxl-uncased-F32-GGUF\",\n    \"input\": \"Parlami di te\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "172.19.0.3:11434/api/embed",
+					"host": [
+						"172",
+						"19",
+						"0",
+						"3"
+					],
+					"port": "11434",
+					"path": [
+						"api",
+						"embed"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
