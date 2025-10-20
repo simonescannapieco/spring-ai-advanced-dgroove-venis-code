@@ -11,23 +11,31 @@ import org.springframework.context.annotation.Primary;
 public class ChatClientConfig {
 
     @Bean
+    @Primary
     public ChatClient openAiChatClient(OpenAiChatModel openaiChatModel) {
+
         return ChatClient.create(openaiChatModel);
+
         /*
          * or:
          * ChatClient.Builder chatClientBulder = ChatClient.builder(openaiChatModel);
          * return chatClientBulder.build();
          */
+
     }
 
     @Bean
-    @Primary
     public ChatClient ollamaChatClient(OllamaChatModel ollamaChatModel) {
-        return ChatClient.create(ollamaChatModel);
+
+        ChatClient.Builder chatClientBulder = ChatClient.builder(ollamaChatModel);
+
+        return chatClientBulder.build();
+
         /*
          * or:
-         * ChatClient.Builder chatClientBulder = ChatClient.builder(ollamaChatModel);
-         * return chatClientBulder.build();
+         * return ChatClient.create(ollamaChatModel);
          */
+
     }
+
 }

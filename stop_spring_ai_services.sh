@@ -1,6 +1,6 @@
 #!/bin/bash
 
-stack=spring-ai-demo
+stack=spring-ai-demo-services
 rmi=local
 file=docker-compose.yml
 envfile=spring-ai.env

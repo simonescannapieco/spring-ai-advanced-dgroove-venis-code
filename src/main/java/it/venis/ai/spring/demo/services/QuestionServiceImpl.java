@@ -14,7 +14,7 @@ public class QuestionServiceImpl implements QuestionService {
 
     private final ChatClient chatClient;
 
-    public QuestionServiceImpl(ChatClient chatClient) {
+    public QuestionServiceImpl(@Qualifier("ollamaChatClient") ChatClient chatClient) {
 
         this.chatClient = chatClient;
 

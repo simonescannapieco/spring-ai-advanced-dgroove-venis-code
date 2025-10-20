@@ -1,8 +1,3 @@
-x-common-variables: &spring-ai-common-variables
-  LOG_LEVEL: ${LOG_LEVEL:-WARNING}
-  QDRANT_HOST: ${QDRANT_HOST:-0.0.0.0}
-  QDRANT_PORT: ${QDRANT_PORT:-6333}
-
 services:
   spring-ai-llm-gpu:
     image: ollama/ollama:${OLLAMA_VERSION:-latest}
@@ -47,19 +42,6 @@ services:
     restart: unless-stopped
     profiles: [llm-cpu]
 
-  spring-ai-vector-memory:
-    image: qdrant/qdrant:${QDRANT_VERSION:-latest}
-    hostname: spring-ai-vector-memory
-    container_name: spring_ai_vector_memory
-    environment: *spring-ai-common-variables
-    expose:
-      - ${QDRANT_PORT:-6333}
-    volumes:
-      - spring_ai_vector:/qdrant/storage
-    restart: unless-stopped
-
 volumes:
   spring_ai_llm:
     name: spring_ai_llm
-  spring_ai_vector:
-    name: spring_ai_vector
