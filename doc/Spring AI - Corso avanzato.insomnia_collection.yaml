@@ -1,0 +1,45 @@
+type: collection.insomnia.rest/5.0
+name: Spring AI - corso avanzato
+meta:
+  id: wrk_bbc2f8808abe4663b7550ef392f239ec
+  created: 1760954971405
+  modified: 1760954971405
+collection:
+  - url: http://localhost:8080/client/ask
+    name: Configurazione multi LLM
+    meta:
+      id: req_b116ccf9a595441cb2dacede6f681572
+      created: 1760954988806
+      modified: 1760955057480
+      isPrivate: false
+      sortKey: -1760954988806
+    method: POST
+    body:
+      mimeType: application/json
+      text: '{"question": "Dimmi il nome che i tuoi sviluppatori ti hanno dato"}'
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/11.0.2
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_7cac826014f1dc3b5bc592480e7055621c05e334
+    created: 1760954971407
+    modified: 1760954971407
+environments:
+  name: Base Environment
+  meta:
+    id: env_7cac826014f1dc3b5bc592480e7055621c05e334
+    created: 1760954971406
+    modified: 1760954971406
+    isPrivate: false

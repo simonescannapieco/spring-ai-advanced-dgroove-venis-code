@@ -7,13 +7,13 @@
 	},
 	"item": [
 		{
-			"name": "Test Ollama LLM",
+			"name": "Configurazione multi LLM",
 			"request": {
 				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"question\": \"Devo calcolare quanto tempo ci metti a rispondermi\"}",
+					"raw": "{\"question\": \"Dimmi il nome che i tuoi sviluppatori ti hanno dato\"}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -29,37 +29,6 @@
 					"path": [
 						"client",
 						"ask"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Test Ollama Embedder",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"model\": \"hf.co/Simone-Scannapieco/sentence-bert-base-italian-xxl-uncased-F32-GGUF\",\n    \"input\": \"Parlami di te\"\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "172.19.0.3:11434/api/embed",
-					"host": [
-						"172",
-						"19",
-						"0",
-						"3"
-					],
-					"port": "11434",
-					"path": [
-						"api",
-						"embed"
 					]
 				}
 			},
