@@ -5,14 +5,39 @@ meta:
   created: 1760954971405
   modified: 1760954971405
 collection:
-  - url: http://localhost:8080/client/ask
-    name: Configurazione multi LLM
+  - url: http://localhost:8080/gemini/ask
+    name: Domanda a Gemini
     meta:
       id: req_b116ccf9a595441cb2dacede6f681572
       created: 1760954988806
-      modified: 1760955057480
+      modified: 1761045330137
       isPrivate: false
       sortKey: -1760954988806
+    method: POST
+    body:
+      mimeType: application/json
+      text: '{"question": "Dimmi il nome che i tuoi sviluppatori ti hanno dato"}'
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/11.0.2
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:8080/ollama/ask
+    name: Domanda a Ollama
+    meta:
+      id: req_e272781656354943bc589e7179fc7e06
+      created: 1761045344710
+      modified: 1761045349384
+      isPrivate: false
+      sortKey: -1759485863236.5
     method: POST
     body:
       mimeType: application/json

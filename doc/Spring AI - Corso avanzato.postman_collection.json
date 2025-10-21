@@ -7,13 +7,13 @@
 	},
 	"item": [
 		{
-			"name": "Configurazione multi LLM",
+			"name": "Domanda a Gemini",
 			"request": {
 				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"question\": \"Dimmi il nome che i tuoi sviluppatori ti hanno dato\"}",
+					"raw": "{\"question\": \"Quale nome ti hanno dato i tuoi sviluppatori?\"}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -21,13 +21,41 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:8080/client/ask",
+					"raw": "localhost:8080/gemini/ask",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"client",
+						"gemini",
+						"ask"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Domanda a Ollama",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"question\": \"Quale nome ti hanno dato i tuoi sviluppatori?\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/ollama/ask",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"ollama",
 						"ask"
 					]
 				}
