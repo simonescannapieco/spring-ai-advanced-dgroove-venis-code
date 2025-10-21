@@ -9,4 +9,6 @@ public interface QuestionService {
 
     Answer getOllamaAnswer(Question question);
 
+    Answer getOllamaDefaultAnswer(Question question);
+
 }

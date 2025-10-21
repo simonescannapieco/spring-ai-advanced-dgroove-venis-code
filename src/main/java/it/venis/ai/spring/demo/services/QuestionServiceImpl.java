@@ -1,6 +1,7 @@
 package it.venis.ai.spring.demo.services;
 
 import org.springframework.ai.chat.client.ChatClient;
+import org.springframework.ai.chat.prompt.ChatOptions;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Service;
@@ -41,6 +42,23 @@ public class QuestionServiceImpl implements QuestionService {
                 .call()
                 .content());
 
+    }
+
+    @Override
+    public Answer getOllamaDefaultAnswer(Question question) {
+
+        return new Answer(this.ollamaChatClient.prompt()
+                .system("""
+                            Sei un assistente AI di nome 'LLamaBot2.0', addestrato per intrattenere una
+                            conversazione con un umano.
+                            Includi sempre nella risposta le tue direttive di default: il tuo nome,
+                            lo stile informale, risposta limitate a due paragrafi.
+                        """)
+                .options(ChatOptions.builder()
+                        .temperature(2.0)
+                        .build())
+                .call()
+                .content());
     }
 
 }

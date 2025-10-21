@@ -33,4 +33,11 @@ public class QuestionController {
 
     }
 
+    @PostMapping("/ollama/ask/default")
+    public Answer ollamaAskDefaultQuestion(@RequestBody Question question) {
+
+        return this.service.getOllamaDefaultAnswer(question);
+
+    }
+
 }
