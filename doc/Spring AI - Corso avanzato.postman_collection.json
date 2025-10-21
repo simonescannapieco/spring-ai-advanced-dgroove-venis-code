@@ -61,6 +61,35 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "Domanda di default a Ollama",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/ollama/ask/default",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"ollama",
+						"ask",
+						"default"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }
