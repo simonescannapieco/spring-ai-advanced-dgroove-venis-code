@@ -19,10 +19,18 @@ public class QuestionController {
 
     }
 
-    @PostMapping("/client/ask")
-    public Answer askQuestion(@RequestBody Question question) {
+    @PostMapping("/gemini/ask")
+    public Answer geminiAskQuestion(@RequestBody Question question) {
 
-        return this.service.getAnswer(question);
+        return this.service.getGeminiAnswer(question);
 
     }
+
+    @PostMapping("/ollama/ask")
+    public Answer ollamaAskQuestion(@RequestBody Question question) {
+
+        return this.service.getOllamaAnswer(question);
+
+    }
+
 }

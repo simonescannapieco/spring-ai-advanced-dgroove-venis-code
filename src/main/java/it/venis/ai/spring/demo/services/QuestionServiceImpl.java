@@ -12,28 +12,34 @@ import it.venis.ai.spring.demo.model.Question;
 @Configuration
 public class QuestionServiceImpl implements QuestionService {
 
-    private final ChatClient chatClient;
+    private final ChatClient geminiChatClient;
+    private final ChatClient ollamaChatClient;
 
-    public QuestionServiceImpl(@Qualifier("ollamaChatClient") ChatClient chatClient) {
+    public QuestionServiceImpl(@Qualifier("geminiChatClient") ChatClient geminiChatClient,
+            @Qualifier("ollamaChatClient") ChatClient ollamaChatClient) {
 
-        this.chatClient = chatClient;
+        this.geminiChatClient = geminiChatClient;
+        this.ollamaChatClient = ollamaChatClient;
 
     }
 
     @Override
-    public String getAnswer(String question) {
+    public Answer getGeminiAnswer(Question question) {
 
-        return this.chatClient.prompt()
-                .user(question)
+        return new Answer(this.geminiChatClient.prompt()
+                .user(question.question())
                 .call()
-                .content();
+                .content());
 
     }
 
     @Override
-    public Answer getAnswer(Question question) {
+    public Answer getOllamaAnswer(Question question) {
 
-        return new Answer(getAnswer(question.question()));
+        return new Answer(this.ollamaChatClient.prompt()
+                .user(question.question())
+                .call()
+                .content());
 
     }
 
