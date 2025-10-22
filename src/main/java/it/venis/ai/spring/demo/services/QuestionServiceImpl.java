@@ -15,12 +15,15 @@ public class QuestionServiceImpl implements QuestionService {
 
     private final ChatClient geminiChatClient;
     private final ChatClient ollamaChatClient;
+    private final ChatClient ollamaMemoryChatClient;
 
     public QuestionServiceImpl(@Qualifier("geminiChatClient") ChatClient geminiChatClient,
-            @Qualifier("ollamaChatClient") ChatClient ollamaChatClient) {
+            @Qualifier("ollamaChatClient") ChatClient ollamaChatClient,
+            @Qualifier("ollamaMemoryChatClient") ChatClient ollamaMemoryChatClient) {
 
         this.geminiChatClient = geminiChatClient;
         this.ollamaChatClient = ollamaChatClient;
+        this.ollamaMemoryChatClient = ollamaMemoryChatClient;
 
     }
 
@@ -57,6 +60,15 @@ public class QuestionServiceImpl implements QuestionService {
                 .options(ChatOptions.builder()
                         .temperature(2.0)
                         .build())
+                .call()
+                .content());
+    }
+
+    @Override
+    public Answer getOllamaMemoryAwareAnswer(Question question) {
+
+        return new Answer(this.ollamaMemoryChatClient.prompt()
+                .user(question.question())
                 .call()
                 .content());
     }

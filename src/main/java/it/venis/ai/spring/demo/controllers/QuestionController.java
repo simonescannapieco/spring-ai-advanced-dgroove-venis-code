@@ -40,4 +40,11 @@ public class QuestionController {
 
     }
 
+    @PostMapping("/ollama/ask/memory")
+    public Answer getOllamaMemoryAwareAnswer(@RequestBody Question question) {
+
+        return this.service.getOllamaMemoryAwareAnswer(question);
+
+    }
+
 }

@@ -11,4 +11,6 @@ public interface QuestionService {
 
     Answer getOllamaDefaultAnswer(Question question);
 
+    Answer getOllamaMemoryAwareAnswer(Question question);
+
 }
