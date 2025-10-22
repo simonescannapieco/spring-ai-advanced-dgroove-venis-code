@@ -1,5 +1,7 @@
 package it.venis.ai.spring.demo.config;
 
+import java.util.List;
+
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.client.advisor.SimpleLoggerAdvisor;
 import org.springframework.ai.chat.prompt.ChatOptions;
@@ -32,7 +34,7 @@ public class ChatClientConfig {
         ChatClient.Builder chatClientBuilder = ChatClient.builder(ollamaChatModel);
 
         return chatClientBuilder
-                .defaultAdvisors(new SimpleLoggerAdvisor(), new OllamaCostSavingsAdvisor())
+                .defaultAdvisors(List.of(new SimpleLoggerAdvisor(), new OllamaCostSavingsAdvisor()))
                 .defaultSystem(
                         """
                             Sei un assistente AI di nome LLamaBot, addestrato per intrattenere una
