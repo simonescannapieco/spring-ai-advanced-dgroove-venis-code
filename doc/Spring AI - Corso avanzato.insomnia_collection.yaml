@@ -88,13 +88,65 @@ collection:
     meta:
       id: req_8aae89615152457fa414c8edbed5ba14
       created: 1761211471230
-      modified: 1761226322049
+      modified: 1761230457035
       isPrivate: false
       sortKey: -1758384019059.375
     method: POST
     body:
       mimeType: application/json
       text: '{"question":"Ciao, come ti chiami?"}'
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/11.0.2
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:8080/ollama/ask/memory/user
+    name: Domanda memory-aware a Ollama - Utente Simone
+    meta:
+      id: req_19135e718c684d4ba68e10e6f409b248
+      created: 1761230407783
+      modified: 1761231311615
+      isPrivate: false
+      sortKey: -1758200378363.1875
+    method: POST
+    body:
+      mimeType: application/json
+      text: '{"username": "Simone1982", "body": {"question":"Potresti darmi dell
+        informazioni sul mio nome?"}}'
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/11.0.2
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:8080/ollama/ask/memory/user
+    name: Domanda memory-aware a Ollama - Utente Andrea
+    meta:
+      id: req_3a000553456e4adcb95e826753c724bc
+      created: 1761230526394
+      modified: 1761231339192
+      isPrivate: false
+      sortKey: -1758108558015.0938
+    method: POST
+    body:
+      mimeType: application/json
+      text: '{"username": "Andrea1982", "body": {"question":"Potresti darmi delle
+        informazioni sul mio nome?"}}'
     headers:
       - name: Content-Type
         value: application/json

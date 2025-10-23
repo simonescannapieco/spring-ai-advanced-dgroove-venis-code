@@ -119,6 +119,64 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "Domanda memory-aware a Ollama - Utente Simone",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"username\": \"Simone1982\", \"body\": {\"question\":\"Potresti darmi dell informazioni sul mio nome?\"}}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/ollama/ask/memory",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"ollama",
+						"ask",
+						"memory"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Domanda memory-aware a Ollama - Utente Andrea",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"username\": \"Andrea1982\", \"body\": {\"question\":\"Potresti darmi dell informazioni sul mio nome?\"}}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/ollama/ask/memory",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"ollama",
+						"ask",
+						"memory"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }
