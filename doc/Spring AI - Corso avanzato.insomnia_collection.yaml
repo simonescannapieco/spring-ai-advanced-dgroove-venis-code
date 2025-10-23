@@ -83,6 +83,31 @@ collection:
         send: true
         store: true
       rebuildPath: true
+  - url: http://localhost:8080/ollama/ask/memory
+    name: Domanda memory-aware a Ollama
+    meta:
+      id: req_8aae89615152457fa414c8edbed5ba14
+      created: 1761211471230
+      modified: 1761226322049
+      isPrivate: false
+      sortKey: -1758384019059.375
+    method: POST
+    body:
+      mimeType: application/json
+      text: '{"question":"Ciao, come ti chiami?"}'
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/11.0.2
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
 cookieJar:
   name: Default Jar
   meta:

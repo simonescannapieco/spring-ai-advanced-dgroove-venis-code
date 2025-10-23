@@ -90,6 +90,35 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "Domanda memory-aware a Ollama",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"question\":\"Ciao, come ti chiami?\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/ollama/ask/memory",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"ollama",
+						"ask",
+						"memory"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }
