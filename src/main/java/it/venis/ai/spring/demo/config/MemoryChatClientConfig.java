@@ -38,7 +38,7 @@ public class MemoryChatClientConfig {
     public ChatMemory chatMemory(ChatMemoryRepository chatMemoryRepository) {
         return MessageWindowChatMemory.builder()
                 .chatMemoryRepository(chatMemoryRepository)
-                .maxMessages(10)
+                .maxMessages(20)
                 .build();
     }
 
