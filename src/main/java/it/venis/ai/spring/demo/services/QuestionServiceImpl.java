@@ -8,6 +8,9 @@ import org.springframework.stereotype.Service;
 
 import it.venis.ai.spring.demo.model.Answer;
 import it.venis.ai.spring.demo.model.Question;
+import it.venis.ai.spring.demo.model.QuestionRequest;
+
+import static org.springframework.ai.chat.memory.ChatMemory.CONVERSATION_ID;
 
 @Service
 @Configuration
@@ -67,8 +70,20 @@ public class QuestionServiceImpl implements QuestionService {
     @Override
     public Answer getOllamaMemoryAwareAnswer(Question question) {
 
-        return new Answer(this.ollamaMemoryChatClient.prompt()
+        return new Answer(this.ollamaMemoryChatClient
+                .prompt()
                 .user(question.question())
+                .call()
+                .content());
+    }
+
+    @Override
+    public Answer getOllamaPerUserMemoryAwareAnswer(QuestionRequest request) {
+
+        return new Answer(this.ollamaMemoryChatClient
+                .prompt()
+                .advisors(advisorSpec -> advisorSpec.param(CONVERSATION_ID, request.username()))
+                .user(request.body().question())
                 .call()
                 .content());
     }
