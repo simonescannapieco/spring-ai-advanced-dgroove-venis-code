@@ -11,8 +11,10 @@ import org.springframework.ai.chat.memory.ChatMemory;
 import org.springframework.ai.chat.memory.ChatMemoryRepository;
 import org.springframework.ai.chat.memory.InMemoryChatMemoryRepository;
 import org.springframework.ai.chat.memory.MessageWindowChatMemory;
+import org.springframework.ai.chat.memory.repository.jdbc.JdbcChatMemoryRepository;
 import org.springframework.ai.chat.prompt.ChatOptions;
 import org.springframework.ai.ollama.OllamaChatModel;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -26,16 +28,25 @@ public class MemoryChatClientConfig {
      * Done under-the-hood via Spring auto-configuration.
      */
     @Bean
-    public ChatMemoryRepository chatMemoryRepository() {
+    public ChatMemoryRepository inMemoryChatMemoryRepository() {
         return new InMemoryChatMemoryRepository();
     }
+
+    /*
+     * Bean to store messages into relational DBs. This is done
+     * under the hood when the correponding .pom dependency is added.
+     * The system infers the type of DB through properties in application
+     * .properties/.yml file.
+     */
+    @Autowired
+    JdbcChatMemoryRepository jdbcChatMemoryRepository;
 
     /*
      * Custom bean for chat memory, based on the (auto-)configured chat memory repository.
      * Done under-the-hood via Spring auto-configuration with maxMessages = 20.
      */
     @Bean
-    public ChatMemory chatMemory(ChatMemoryRepository chatMemoryRepository) {
+    public ChatMemory chatMemory(@Qualifier("jdbcChatMemoryRepository") ChatMemoryRepository chatMemoryRepository) {
         return MessageWindowChatMemory.builder()
                 .chatMemoryRepository(chatMemoryRepository)
                 .maxMessages(20)

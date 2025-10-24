@@ -7,6 +7,11 @@ spring:
                 enabled: false # Spring AI auto-configures a single ChatClient.Builder bean by default.
                                # Disabling ChatClient.Builder auto-configuration allows to manually
                                # configure multiple bean and inject them where needed.
+            memory:
+                repository:
+                    jdbc:
+                        initialize-schema: always # always, never, embedded (default)
+                        schema: classpath:/schema/schema-h2.sql
         ollama:
             base-url: http://172.19.0.2:11434
             init:
@@ -29,6 +34,14 @@ spring:
                 options:
                     model: gemini-2.0-flash-lite
                     temperature: 2.0
+    datasource:
+        url: jdbc:h2:file:./db/chatmemory
+        driver-class-name: org.h2.Driver
+        username: user
+        password: pwd
+    h2:
+        console:
+            enabled: true
 logging:
     level:
         org:
