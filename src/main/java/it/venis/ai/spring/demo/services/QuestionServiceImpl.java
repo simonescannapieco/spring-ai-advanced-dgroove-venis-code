@@ -10,7 +10,7 @@ import it.venis.ai.spring.demo.model.Answer;
 import it.venis.ai.spring.demo.model.Question;
 import it.venis.ai.spring.demo.model.QuestionRequest;
 
-import static org.springframework.ai.chat.memory.ChatMemory.CONVERSATION_ID;
+import org.springframework.ai.chat.memory.ChatMemory;
 
 @Service
 @Configuration
@@ -82,7 +82,7 @@ public class QuestionServiceImpl implements QuestionService {
 
         return new Answer(this.ollamaMemoryChatClient
                 .prompt()
-                .advisors(advisorSpec -> advisorSpec.param(CONVERSATION_ID, request.username()))
+                .advisors(advisorSpec -> advisorSpec.param(ChatMemory.CONVERSATION_ID, request.username()))
                 .user(request.body().question())
                 .call()
                 .content());
