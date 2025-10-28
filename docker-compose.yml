@@ -40,6 +40,19 @@ services:
     restart: unless-stopped
     profiles: [llm-cpu]
 
+  spring-ai-vector-store:
+    image: qdrant/qdrant:${QDRANT_VERSION:-latest}
+    hostname: spring-ai-vector-store
+    container_name: spring_ai_vector_store
+    ports:
+      - ${QDRANT_HTTP_PORT:-6333}:6333
+      - ${QDRANT_GRCP_PORT:-6334}:6334
+    volumes:
+      - spring_ai_vector_store:/qdrant/storage
+    restart: unless-stopped
+    
 volumes:
   spring_ai_llm:
     name: spring_ai_llm
+  spring_ai_vector_store:
+    name: spring_ai_vector_store
