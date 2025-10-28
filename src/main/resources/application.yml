@@ -3,16 +3,17 @@ spring:
         name: demo
     autoconfigure:
         exclude:
-        - org.springframework.ai.vectorstore.qdrant.autoconfigure.QdrantVectorStoreAutoConfiguration
+            - org.springframework.ai.vectorstore.qdrant.autoconfigure.QdrantVectorStoreAutoConfiguration
         # We must disable Vector Store auto-configuration because of two different EmbeddingModel beans
         # (OpenAI-Gemini and Ollama). The goal is to have two different vector collections, one for each
         # family of LLM.
     ai:
         chat:
-            client: 
-                enabled: false # Spring AI auto-configures a single ChatClient.Builder bean by default.
-                               # Disabling ChatClient.Builder auto-configuration allows to manually
-                               # configure multiple bean and inject them where needed.
+            client:
+                enabled:
+                    false # Spring AI auto-configures a single ChatClient.Builder bean by default.
+                    # Disabling ChatClient.Builder auto-configuration allows to manually
+                    # configure multiple bean and inject them where needed.
             memory:
                 repository:
                     jdbc:
@@ -23,15 +24,15 @@ spring:
             init:
                 pull-model-strategy: when_missing
                 timeout: 15m
-                max-retries: 3 
+                max-retries: 3
             chat:
-              options:
-                model: VitoF/llama-3.1-8b-italian
-                temperature: 0.2
-                top-k: 40
-                top-p: 0.9
-                repeat-penalty: 1.1 
-                presence-penalty: 1.0
+                options:
+                    model: VitoF/llama-3.1-8b-italian
+                    temperature: 0.2
+                    top-k: 40
+                    top-p: 0.9
+                    repeat-penalty: 1.1
+                    presence-penalty: 1.0
             embedding:
                 model: hf.co/Simone-Scannapieco/sentence-bert-base-italian-xxl-uncased-F32-GGUF
         openai:
