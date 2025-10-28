@@ -39,6 +39,7 @@ services:
       - spring_ai_llm:/root/.ollama
     restart: unless-stopped
     profiles: [llm-cpu]
+    
 volumes:
   spring_ai_llm:
     name: spring_ai_llm
