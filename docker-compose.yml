@@ -4,14 +4,13 @@ services:
     hostname: spring-ai-llm
     container_name: spring_ai_llm
     environment:
-      OLLAMA_HOST: "${OLLAMA_HOST:-0.0.0.0}:${OLLAMA_PORT-11434}"
       OLLAMA_DEBUG: ${OLLAMA_DEBUG:-false}
       OLLAMA_FLASH_ATTENTION: ${OLLAMA_FLASH_ATTENTION:-false}
       OLLAMA_KEEP_ALIVE: ${OLLAMA_KEEP_ALIVE:-"5m"}
       OLLAMA_MAX_LOADED_MODELS: ${OLLAMA_MAX_LOADED_MODELS:-1}
       OLLAMA_NUM_PARALLEL: ${OLLAMA_NUM_PARALLEL:-1}
-    expose:
-      - ${OLLAMA_PORT:-11434}
+    ports:
+      - ${OLLAMA_PORT:-11434}:11434
     deploy:
       resources:
         reservations:
@@ -29,19 +28,17 @@ services:
     hostname: spring-ai-llm
     container_name: spring_ai_llm
     environment:
-      OLLAMA_HOST: "${OLLAMA_HOST:-0.0.0.0}:${OLLAMA_PORT-11434}"
       OLLAMA_DEBUG: ${OLLAMA_DEBUG:-false}
       OLLAMA_FLASH_ATTENTION: ${OLLAMA_FLASH_ATTENTION:-false}
       OLLAMA_KEEP_ALIVE: ${OLLAMA_KEEP_ALIVE:-"5m"}
       OLLAMA_MAX_LOADED_MODELS: ${OLLAMA_MAX_LOADED_MODELS:-1}
       OLLAMA_NUM_PARALLEL: ${OLLAMA_NUM_PARALLEL:-1}
-    expose:
-      - ${OLLAMA_PORT:-11434}
+    ports:
+      - ${OLLAMA_PORT:-11434}:11434
     volumes:
       - spring_ai_llm:/root/.ollama
     restart: unless-stopped
     profiles: [llm-cpu]
-
 volumes:
   spring_ai_llm:
     name: spring_ai_llm
