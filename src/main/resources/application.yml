@@ -13,7 +13,7 @@ spring:
                         initialize-schema: always # always, never, embedded (default)
                         schema: classpath:/schema/schema-h2.sql
         ollama:
-            base-url: http://172.19.0.2:11434
+            base-url: http://172.17.0.1:11434
             init:
                 pull-model-strategy: when_missing
                 timeout: 15m
