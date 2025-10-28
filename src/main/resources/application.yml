@@ -8,7 +8,7 @@ spring:
                                # Disabling ChatClient.Builder auto-configuration allows to manually
                                # configure multiple bean and inject them where needed.
         ollama:
-            base-url: http://172.19.0.2:11434
+            base-url: http://172.17.0.1:11434
             init:
                 pull-model-strategy: when_missing
                 timeout: 15m
