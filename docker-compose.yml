@@ -50,7 +50,7 @@ services:
     volumes:
       - spring_ai_vector_store:/qdrant/storage
     restart: unless-stopped
-    
+
 volumes:
   spring_ai_llm:
     name: spring_ai_llm
