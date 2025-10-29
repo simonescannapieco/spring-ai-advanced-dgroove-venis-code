@@ -1,7 +1,7 @@
 # Spring AI
 ## Generative Artificial Intelligence con Java - Corso avanzato
 
-### Configurazione JDBC H2 *chat memory* per `ChatClient` Ollama
+### RAG: *Chatbot* Ollama-CV e Gemini-Venis (*text to vector store*)
 
 1. Iscrizione al portale HuggingFace e creazione *access token*
 2. Verifica e modifica variabili di ambiente
