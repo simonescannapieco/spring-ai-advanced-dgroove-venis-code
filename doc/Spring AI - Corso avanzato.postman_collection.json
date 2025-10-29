@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "d998addb-bfd2-40fa-9b27-b663081a5881",
+		"_postman_id": "c3098877-c58a-4404-8752-6855e3c1017a",
 		"name": "Spring AI - Corso avanzato",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "13237634"
+		"_exporter_id": "8264677"
 	},
 	"item": [
 		{
@@ -175,6 +175,68 @@
 						"ask",
 						"memory",
 						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Domanda RAG TTVS memory-aware a Ollama - CV",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"Simone1982\",\n    \"body\": {\n        \"question\": \"Simone ha lavorato all'estero?\"\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/ollama/ask/rag/text-to-vs/cv",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"ollama",
+						"ask",
+						"rag",
+						"text-to-vs",
+						"cv"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Domanda RAG TTVS a Gemini - Venis",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"Simone1982\",\n    \"body\": {\n        \"question\": \"What are the main core businesses of Venis?\"\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/gemini/ask/rag/text-to-vs/venis",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"gemini",
+						"ask",
+						"rag",
+						"text-to-vs",
+						"venis"
 					]
 				}
 			},

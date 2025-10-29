@@ -1,14 +1,14 @@
 type: collection.insomnia.rest/5.0
 name: Spring AI - corso avanzato
 meta:
-  id: wrk_bbc2f8808abe4663b7550ef392f239ec
-  created: 1760954971405
-  modified: 1760954971405
+  id: wrk_6f275e7fb93741eea2a24ee3371ecd40
+  created: 1761746574586
+  modified: 1761746574586
 collection:
   - url: http://localhost:8080/gemini/ask
     name: Domanda a Gemini
     meta:
-      id: req_b116ccf9a595441cb2dacede6f681572
+      id: req_ec1418df1ac14890b76849a471da66a8
       created: 1760954988806
       modified: 1761045330137
       isPrivate: false
@@ -33,9 +33,9 @@ collection:
   - url: http://localhost:8080/ollama/ask
     name: Domanda a Ollama
     meta:
-      id: req_e272781656354943bc589e7179fc7e06
+      id: req_4aa0ad8856c64f57b2b4b4be4c1f2c26
       created: 1761045344710
-      modified: 1761048026346
+      modified: 1761748752364
       isPrivate: false
       sortKey: -1759485863236.5
     method: POST
@@ -61,7 +61,7 @@ collection:
   - url: http://localhost:8080/ollama/ask/default
     name: Domanda di default a Ollama
     meta:
-      id: req_b85422ea68564d838d422fd9c25974c5
+      id: req_86cef481c7294126bdf52edf1a4b5c4e
       created: 1761048659429
       modified: 1761048702507
       isPrivate: false
@@ -86,7 +86,7 @@ collection:
   - url: http://localhost:8080/ollama/ask/memory
     name: Domanda memory-aware a Ollama
     meta:
-      id: req_8aae89615152457fa414c8edbed5ba14
+      id: req_7978604025ef408b930251df673d756d
       created: 1761211471230
       modified: 1761230457035
       isPrivate: false
@@ -111,7 +111,7 @@ collection:
   - url: http://localhost:8080/ollama/ask/memory/user
     name: Domanda memory-aware a Ollama - Utente Simone
     meta:
-      id: req_19135e718c684d4ba68e10e6f409b248
+      id: req_391595df940649a3a32dbb1b5f9d8bf4
       created: 1761230407783
       modified: 1761231311615
       isPrivate: false
@@ -137,7 +137,7 @@ collection:
   - url: http://localhost:8080/ollama/ask/memory/user
     name: Domanda memory-aware a Ollama - Utente Andrea
     meta:
-      id: req_3a000553456e4adcb95e826753c724bc
+      id: req_ebef6e1147c449c6a7bc6ec8f683ae49
       created: 1761230526394
       modified: 1761231339192
       isPrivate: false
@@ -160,16 +160,68 @@ collection:
         send: true
         store: true
       rebuildPath: true
+  - url: http://localhost:8080/ollama/ask/rag/text-to-vs/cv
+    name: Domanda RAG TTVS memory-aware a Ollama - CV
+    meta:
+      id: req_65b9edd249e2499f818a866a6a3224ce
+      created: 1761747533944
+      modified: 1761749041124
+      isPrivate: false
+      sortKey: -1758062647841.0469
+    method: POST
+    body:
+      mimeType: application/json
+      text: "{\"username\": \"Simone1982\", \"body\": {\"question\":\"Simone ha
+        lavorato all'estero?\"}}"
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/11.0.2
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:8080/gemini/ask/rag/text-to-vs/venis
+    name: Domanda RAG TTVS a Gemini - Venis
+    meta:
+      id: req_dcf568be3b5448cbb0b5c28d6858e7cb
+      created: 1761748606669
+      modified: 1761748662508
+      isPrivate: false
+      sortKey: -1758039692754.0234
+    method: POST
+    body:
+      mimeType: application/json
+      text: '{"username": "Simone1982", "body": {"question":"What are the main core
+        businesses of Venis?"}}'
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/11.0.2
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
 cookieJar:
   name: Default Jar
   meta:
-    id: jar_7cac826014f1dc3b5bc592480e7055621c05e334
+    id: jar_4bfe31a648ec4a338def1665efb07a02
     created: 1760954971407
     modified: 1760954971407
 environments:
   name: Base Environment
   meta:
-    id: env_7cac826014f1dc3b5bc592480e7055621c05e334
+    id: env_ffb2b1f31e9049f481dcc8244689910b
     created: 1760954971406
     modified: 1760954971406
     isPrivate: false
