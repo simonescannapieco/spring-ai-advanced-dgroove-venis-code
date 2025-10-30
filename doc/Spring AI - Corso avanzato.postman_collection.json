@@ -195,7 +195,7 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:8080/ollama/ask/rag/text-to-vs/cv",
+					"raw": "localhost:8080/ollama/ask/rag",
 					"host": [
 						"localhost"
 					],
@@ -203,9 +203,7 @@
 					"path": [
 						"ollama",
 						"ask",
-						"rag",
-						"text-to-vs",
-						"cv"
+						"rag"
 					]
 				}
 			},
@@ -226,7 +224,7 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:8080/gemini/ask/rag/text-to-vs/venis",
+					"raw": "localhost:8080/gemini/ask/rag",
 					"host": [
 						"localhost"
 					],
@@ -234,9 +232,7 @@
 					"path": [
 						"gemini",
 						"ask",
-						"rag",
-						"text-to-vs",
-						"venis"
+						"rag"
 					]
 				}
 			},
