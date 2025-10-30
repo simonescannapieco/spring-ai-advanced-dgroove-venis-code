@@ -127,7 +127,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"username\": \"Simone1982\", \"body\": {\"question\":\"Potresti darmi dell informazioni sul mio nome?\"}}",
+					"raw": "{\"username\": \"Simone1982\", \"body\": {\"question\":\"Potresti darmi delle informazioni sul mio nome?\"}}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -157,7 +157,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"username\": \"Andrea1982\", \"body\": {\"question\":\"Potresti darmi dell informazioni sul mio nome?\"}}",
+					"raw": "{\"username\": \"Andrea1982\", \"body\": {\"question\":\"Potresti darmi delle informazioni sul mio nome?\"}}",
 					"options": {
 						"raw": {
 							"language": "json"
