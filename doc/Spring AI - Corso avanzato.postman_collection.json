@@ -127,7 +127,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"username\": \"Simone1982\", \"body\": {\"question\":\"Potresti darmi dell informazioni sul mio nome?\"}}",
+					"raw": "{\"username\": \"Simone1982\", \"body\": {\"question\":\"Potresti darmi delle informazioni sul mio nome?\"}}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -157,7 +157,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"username\": \"Andrea1982\", \"body\": {\"question\":\"Potresti darmi dell informazioni sul mio nome?\"}}",
+					"raw": "{\"username\": \"Andrea1982\", \"body\": {\"question\":\"Potresti darmi delle informazioni sul mio nome?\"}}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -181,13 +181,13 @@
 			"response": []
 		},
 		{
-			"name": "Domanda RAG TTVS memory-aware a Ollama - CV",
+			"name": "Domanda RAG a Ollama",
 			"request": {
 				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"username\": \"Simone1982\",\n    \"body\": {\n        \"question\": \"Simone ha lavorato all'estero?\"\n    }\n}",
+					"raw": "{\n    \"username\": \"Simone1982\",\n    \"body\": {\n        \"question\": \"Quanti giorni di ferie spettano al mese?\"\n    }\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -195,7 +195,7 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:8080/ollama/ask/rag/text-to-vs/cv",
+					"raw": "localhost:8080/ollama/ask/rag",
 					"host": [
 						"localhost"
 					],
@@ -203,22 +203,20 @@
 					"path": [
 						"ollama",
 						"ask",
-						"rag",
-						"text-to-vs",
-						"cv"
+						"rag"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "Domanda RAG TTVS a Gemini - Venis",
+			"name": "Domanda RAG a Gemini",
 			"request": {
 				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"username\": \"Simone1982\",\n    \"body\": {\n        \"question\": \"What are the main core businesses of Venis?\"\n    }\n}",
+					"raw": "{\n    \"username\": \"Simone1982\",\n    \"body\": {\n        \"question\": \"How many days do I have to wait before I can quit?\"\n    }\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -226,7 +224,7 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:8080/gemini/ask/rag/text-to-vs/venis",
+					"raw": "localhost:8080/gemini/ask/rag",
 					"host": [
 						"localhost"
 					],
@@ -234,9 +232,7 @@
 					"path": [
 						"gemini",
 						"ask",
-						"rag",
-						"text-to-vs",
-						"venis"
+						"rag"
 					]
 				}
 			},
