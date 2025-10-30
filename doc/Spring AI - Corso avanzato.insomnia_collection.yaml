@@ -160,8 +160,8 @@ collection:
         send: true
         store: true
       rebuildPath: true
-  - url: http://localhost:8080/ollama/ask/rag/text-to-vs/cv
-    name: Domanda RAG TTVS memory-aware a Ollama - CV
+  - url: http://localhost:8080/ollama/ask/rag
+    name: Domanda RAG a Ollama
     meta:
       id: req_65b9edd249e2499f818a866a6a3224ce
       created: 1761747533944
@@ -186,8 +186,8 @@ collection:
         send: true
         store: true
       rebuildPath: true
-  - url: http://localhost:8080/gemini/ask/rag/text-to-vs/venis
-    name: Domanda RAG TTVS a Gemini - Venis
+  - url: http://localhost:8080/gemini/ask/rag
+    name: Domanda RAG a Gemini
     meta:
       id: req_dcf568be3b5448cbb0b5c28d6858e7cb
       created: 1761748606669
