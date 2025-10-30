@@ -31,9 +31,9 @@ public class RAGConfig {
 
     }
 
-    @Value("${spring.ai.vectorstore.qdrant.collection-name.gemini:vector_store_gemini}")
+    @Value("${demo.rag.vectorstore.qdrant.collection-name.gemini:vector_store_gemini}")
     private String qdrantCollectionNameGemini;
-    @Value("${spring.ai.vectorstore.qdrant.collection-name.ollama:vector_store_ollama}")
+    @Value("${demo.rag.vectorstore.qdrant.collection-name.ollama:vector_store_ollama}")
     private String qdrantCollectionNameOllama;
     @Value("${spring.ai.vectorstore.qdrant.initialize-schema:false}")
     private Boolean qdrantInitializeSchema;

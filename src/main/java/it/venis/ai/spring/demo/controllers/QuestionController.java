@@ -58,17 +58,17 @@ public class QuestionController {
 
     }
 
-    @PostMapping("/gemini/ask/rag/text-to-vs/venis")
-    public Answer getGeminiRAGTextToVectorStoreAnswer(@RequestBody QuestionRequest request) {
+    @PostMapping("/gemini/ask/rag")
+    public Answer getGeminiRAGAnswer(@RequestBody QuestionRequest request) {
 
-        return this.ragService.getGeminiRAGTextToVectorStoreAnswer(request);
+        return this.ragService.getGeminiRAGAnswer(request);
 
     }
 
-    @PostMapping("/ollama/ask/rag/text-to-vs/cv")
-    public Answer getOllamaRAGTextToVectorStoreAnswer(@RequestBody QuestionRequest request) {
+    @PostMapping("/ollama/ask/rag")
+    public Answer getOllamaRAGAnswer(@RequestBody QuestionRequest request) {
 
-        return this.ragService.getOllamaRAGTextToVectorStoreAnswer(request);
+        return this.ragService.getOllamaRAGAnswer(request);
 
     }
 

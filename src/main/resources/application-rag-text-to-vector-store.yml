@@ -1,0 +1,14 @@
+demo:
+    rag:
+        prompt:
+            system:
+                ita: classpath:templates/get-rag-data-system-ita-prompt.st
+                eng: classpath:templates/get-rag-data-system-eng-prompt.st
+            user:
+                ita:
+                eng:
+        vectorstore:
+            qdrant:
+                collection-name:
+                    ollama: vector_store_ttvs_ollama
+                    gemini: vector_store_ttvs_gemini

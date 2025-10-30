@@ -13,6 +13,7 @@ import org.springframework.ai.vectorstore.VectorStore;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
 
@@ -44,11 +45,11 @@ public class RAGServiceImpl implements RAGService {
 
     }
 
-    @Value("classpath:templates/get-rag-data-system-eng-prompt.st")
+    @Value("${demo.rag.prompt.system.eng}")
     private Resource ragDataSystemEngPrompt;
 
     @Override
-    public Answer getGeminiRAGTextToVectorStoreAnswer(QuestionRequest request) {
+    public Answer getGeminiRAGAnswer(QuestionRequest request) {
 
         SearchRequest searchRequest = SearchRequest.builder()
                 .query(request.body().question())
@@ -75,11 +76,11 @@ public class RAGServiceImpl implements RAGService {
                 .content());
     }
 
-    @Value("classpath:templates/get-rag-data-system-ita-prompt.st")
+    @Value("${demo.rag.prompt.system.ita}")
     private Resource ragDataSystemItaPrompt;
 
     @Override
-    public Answer getOllamaRAGTextToVectorStoreAnswer(QuestionRequest request) {
+    public Answer getOllamaRAGAnswer(QuestionRequest request) {
 
         SearchRequest searchRequest = SearchRequest.builder()
                 .query(request.body().question())

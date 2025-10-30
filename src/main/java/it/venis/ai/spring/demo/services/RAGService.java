@@ -5,8 +5,8 @@ import it.venis.ai.spring.demo.model.QuestionRequest;
 
 public interface RAGService {
 
-    public Answer getGeminiRAGTextToVectorStoreAnswer(QuestionRequest request);
+    public Answer getGeminiRAGAnswer(QuestionRequest request);
 
-    public Answer getOllamaRAGTextToVectorStoreAnswer(QuestionRequest request);
+    public Answer getOllamaRAGAnswer(QuestionRequest request);
 
 }
