@@ -14,38 +14,36 @@ import io.qdrant.client.QdrantGrpcClient;
 @Configuration
 public class RAGConfig {
 
-    @Value("${spring.ai.vectorstore.qdrant.host:#{null}}")
+    @Value("${spring.ai.vectorstore.qdrant.host:localhost}")
     private String qdrantHost;
-    @Value("${spring.ai.vectorstore.qdrant.port:#{null}}")
-    private String qdrantPort;
-    @Value("${spring.ai.vectorstore.qdrant.use-tls:#{null}}")
-    private String useTls;
+    @Value("${spring.ai.vectorstore.qdrant.port:6334}")
+    private Integer qdrantPort;
+    @Value("${spring.ai.vectorstore.qdrant.use-tls:false}")
+    private Boolean useTls;
 
     @Bean
     public QdrantClient qdrantClient() {
 
         QdrantGrpcClient.Builder grpcClientBuilder = QdrantGrpcClient.newBuilder(
-                qdrantHost == null ? "localhost" : qdrantHost,
-                qdrantPort == null ? 6334 : Integer.valueOf(qdrantPort),
-                useTls == null ? false : Boolean.valueOf(useTls));
+                qdrantHost, qdrantPort, useTls);
 
         return new QdrantClient(grpcClientBuilder.build());
 
     }
 
-    @Value("${spring.ai.vectorstore.qdrant.collection-name.gemini:#{null}}")
+    @Value("${spring.ai.vectorstore.qdrant.collection-name.gemini:vector_store_gemini}")
     private String qdrantCollectionNameGemini;
-    @Value("${spring.ai.vectorstore.qdrant.collection-name.ollama:#{null}}")
+    @Value("${spring.ai.vectorstore.qdrant.collection-name.ollama:vector_store_ollama}")
     private String qdrantCollectionNameOllama;
-    @Value("${spring.ai.vectorstore.qdrant.initialize-schema:#{null}}")
-    private String qdrantInitializeSchema;
+    @Value("${spring.ai.vectorstore.qdrant.initialize-schema:false}")
+    private Boolean qdrantInitializeSchema;
 
     @Bean
     public VectorStore geminiVectorStore(QdrantClient qdrantClient, OpenAiEmbeddingModel geminiEmbeddingModel) {
 
         return QdrantVectorStore.builder(qdrantClient, geminiEmbeddingModel)
-                .collectionName(qdrantCollectionNameGemini == null ? "vector_store_gemini" : qdrantCollectionNameGemini)
-                .initializeSchema(qdrantInitializeSchema == null ? false : Boolean.valueOf(qdrantInitializeSchema))
+                .collectionName(qdrantCollectionNameGemini)
+                .initializeSchema(qdrantInitializeSchema)
                 .build();
 
     }
@@ -54,8 +52,8 @@ public class RAGConfig {
     public VectorStore ollamaVectorStore(QdrantClient qdrantClient, OllamaEmbeddingModel ollamaEmbeddingModel) {
 
         return QdrantVectorStore.builder(qdrantClient, ollamaEmbeddingModel)
-                .collectionName(qdrantCollectionNameOllama == null ? "vector_store_ollama" : qdrantCollectionNameOllama)
-                .initializeSchema(qdrantInitializeSchema == null ? false : Boolean.valueOf(qdrantInitializeSchema))
+                .collectionName(qdrantCollectionNameOllama)
+                .initializeSchema(qdrantInitializeSchema)
                 .build();
 
     }
