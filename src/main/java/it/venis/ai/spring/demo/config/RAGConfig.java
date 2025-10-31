@@ -62,7 +62,7 @@ public class RAGConfig {
     }
 
     @Bean
-    RetrievalAugmentationAdvisor geminiRetrievalAugmentationAdvisor(
+    public RetrievalAugmentationAdvisor geminiRetrievalAugmentationAdvisor(
             @Qualifier("geminiVectorStore") VectorStore geminiVectorStore) {
 
         return RetrievalAugmentationAdvisor.builder()
