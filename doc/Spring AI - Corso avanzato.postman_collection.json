@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "c3098877-c58a-4404-8752-6855e3c1017a",
+		"_postman_id": "fe9fe58c-8012-49d8-95df-8d2c2acf8aab",
 		"name": "Spring AI - Corso avanzato",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "8264677"
+		"_exporter_id": "13237634"
 	},
 	"item": [
 		{
@@ -233,6 +233,75 @@
 						"gemini",
 						"ask",
 						"rag"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Test Docker Model Runner - Chat",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"model\": \"ai/gemma3\",\n    \"messages\": [\n        {\n            \"role\": \"user\",\n            \"content\": \"Ciao! Come ti chiami?\"\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://172.17.0.1:12434/engines/llama.cpp/v1/chat/completions",
+					"protocol": "http",
+					"host": [
+						"172",
+						"17",
+						"0",
+						"1"
+					],
+					"port": "12434",
+					"path": [
+						"engines",
+						"llama.cpp",
+						"v1",
+						"chat",
+						"completions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Test Docker Model Runner - Embedding",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"model\": \"hf.co/unsloth/embeddinggemma-300m-gguf\",\n    \"input\": \"Questa è una frase di prova\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://172.17.0.1:12434/engines/llama.cpp/v1/embeddings",
+					"protocol": "http",
+					"host": [
+						"172",
+						"17",
+						"0",
+						"1"
+					],
+					"port": "12434",
+					"path": [
+						"engines",
+						"llama.cpp",
+						"v1",
+						"embeddings"
 					]
 				}
 			},

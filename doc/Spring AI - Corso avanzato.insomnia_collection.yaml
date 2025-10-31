@@ -191,7 +191,7 @@ collection:
     meta:
       id: req_848e666c0585412a8a44517a1e204e2f
       created: 1761748606669
-      modified: 1761840955262
+      modified: 1761909676187
       isPrivate: false
       sortKey: -1758039692754.0234
     method: POST
@@ -199,6 +199,64 @@ collection:
       mimeType: application/json
       text: '{"username": "Simone1982", "body": {"question":"How many days do I have
         to wait before I can quit?"}}'
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/11.0.2
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://172.17.0.1:12434/engines/llama.cpp/v1/chat/completions
+    name: Test Docker Model Runner - Chat
+    meta:
+      id: req_79d553ff40d643b993cbd5cf1f0886e6
+      created: 1761907273929
+      modified: 1761907511867
+      isPrivate: false
+      sortKey: -1758039692654.0234
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "model": "ai/gemma3", 
+          "messages": [{"role": "user", "content": "Ciao! Come ti chiami?"}]
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/11.0.2
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://172.17.0.1:12434/engines/llama.cpp/v1/embeddings
+    name: Test Docker Model Runner - Embedding
+    meta:
+      id: req_92b3ffbd9c3c458bbeff590979eda049
+      created: 1761907520676
+      modified: 1761907573946
+      isPrivate: false
+      sortKey: -1758028215160.5117
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"model": "hf.co/unsloth/embeddinggemma-300m-gguf",
+          "input": "Questa è una frase di prova"
+        }
     headers:
       - name: Content-Type
         value: application/json
