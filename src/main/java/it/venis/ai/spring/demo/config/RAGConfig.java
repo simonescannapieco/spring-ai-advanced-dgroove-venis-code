@@ -2,8 +2,11 @@ package it.venis.ai.spring.demo.config;
 
 import org.springframework.ai.ollama.OllamaEmbeddingModel;
 import org.springframework.ai.openai.OpenAiEmbeddingModel;
+import org.springframework.ai.rag.advisor.RetrievalAugmentationAdvisor;
+import org.springframework.ai.rag.retrieval.search.VectorStoreDocumentRetriever;
 import org.springframework.ai.vectorstore.VectorStore;
 import org.springframework.ai.vectorstore.qdrant.QdrantVectorStore;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -56,6 +59,20 @@ public class RAGConfig {
                 .initializeSchema(qdrantInitializeSchema)
                 .build();
 
+    }
+
+    @Bean
+    RetrievalAugmentationAdvisor geminiRetrievalAugmentationAdvisor(
+            @Qualifier("geminiVectorStore") VectorStore geminiVectorStore) {
+
+        return RetrievalAugmentationAdvisor.builder()
+                .documentRetriever(
+                        VectorStoreDocumentRetriever.builder()
+                                .vectorStore(geminiVectorStore)
+                                .topK(4)
+                                .similarityThreshold(.2)
+                                .build())
+                .build();
     }
 
 }
