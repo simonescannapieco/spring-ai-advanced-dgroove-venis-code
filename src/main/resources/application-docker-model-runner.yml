@@ -1,0 +1,14 @@
+spring:
+    ai:
+        openai:
+            api-key: pippoplutopaperino
+            base-url: http://localhost:12434/engines
+            chat:
+                completions-path: /llama.cpp/v1/chat/completions
+                options:
+                    model: ai/gemma3
+                    temperature: 0.2
+            embedding:
+                embeddings-path: /llama.cpp/v1/embeddings
+                options:
+                    model: hf.co/unsloth/embeddinggemma-300m-gguf
