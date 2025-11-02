@@ -72,4 +72,11 @@ public class QuestionController {
 
     }
 
+    @PostMapping("/ollama/ask/rag/web-search")
+    public Answer getOllamaWebSearchRAGAnswer(@RequestBody QuestionRequest request) {
+
+        return this.ragService.getOllamaWebSearchRAGAnswer(request);
+
+    }
+
 }

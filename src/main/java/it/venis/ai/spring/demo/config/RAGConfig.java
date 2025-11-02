@@ -10,9 +10,11 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.client.RestClient;
 
 import io.qdrant.client.QdrantClient;
 import io.qdrant.client.QdrantGrpcClient;
+import it.venis.ai.spring.demo.rag.WebSearchDocumentRetriever;
 
 @Configuration
 public class RAGConfig {
@@ -72,6 +74,15 @@ public class RAGConfig {
                                 .topK(4)
                                 .similarityThreshold(.2)
                                 .build())
+                .build();
+    }
+
+    @Bean
+    public RetrievalAugmentationAdvisor webSearchRetrievalAugmentationAdvisor(RestClient.Builder restClientBuilder) {
+
+        return RetrievalAugmentationAdvisor.builder()
+                .documentRetriever(WebSearchDocumentRetriever.builder()
+                        .restClientBuilder(restClientBuilder).maxResults(1).build())
                 .build();
     }
 

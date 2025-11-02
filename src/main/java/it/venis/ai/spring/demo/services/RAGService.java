@@ -9,4 +9,6 @@ public interface RAGService {
 
     public Answer getOllamaRAGAnswer(QuestionRequest request);
 
+    public Answer getOllamaWebSearchRAGAnswer(QuestionRequest request);
+
 }

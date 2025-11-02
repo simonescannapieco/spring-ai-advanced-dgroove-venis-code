@@ -31,6 +31,7 @@ public class RAGServiceImpl implements RAGService {
         private VectorStore geminiVectorStore;
         private VectorStore ollamaVectorStore;
         private RetrievalAugmentationAdvisor geminiRetrievalAugmentationAdvisor;
+        private RetrievalAugmentationAdvisor webSearchRetrievalAugmentationAdvisor;
 
         public RAGServiceImpl(
                         @Qualifier("geminiChatClient") ChatClient geminiChatClient,
@@ -38,7 +39,8 @@ public class RAGServiceImpl implements RAGService {
                         @Qualifier("ollamaMemoryChatClient") ChatClient ollamaMemoryChatClient,
                         @Qualifier("geminiVectorStore") VectorStore geminiVectorStore,
                         @Qualifier("ollamaVectorStore") VectorStore ollamaVectorStore,
-                        @Qualifier("geminiRetrievalAugmentationAdvisor") RetrievalAugmentationAdvisor geminiRetrievalAugmentationAdvisor) {
+                        @Qualifier("geminiRetrievalAugmentationAdvisor") RetrievalAugmentationAdvisor geminiRetrievalAugmentationAdvisor,
+                        @Qualifier("webSearchRetrievalAugmentationAdvisor") RetrievalAugmentationAdvisor webSearchRetrievalAugmentationAdvisor) {
 
                 this.geminiChatClient = geminiChatClient;
                 this.ollamaChatClient = ollamaChatClient;
@@ -46,7 +48,7 @@ public class RAGServiceImpl implements RAGService {
                 this.geminiVectorStore = geminiVectorStore;
                 this.ollamaVectorStore = ollamaVectorStore;
                 this.geminiRetrievalAugmentationAdvisor = geminiRetrievalAugmentationAdvisor;
-
+                this.webSearchRetrievalAugmentationAdvisor = webSearchRetrievalAugmentationAdvisor;
         }
 
         @Value("${demo.rag.prompt.system.eng}")
@@ -122,6 +124,16 @@ public class RAGServiceImpl implements RAGService {
                                 .templateRenderer(StTemplateRenderer.builder().startDelimiterToken('<')
                                                 .endDelimiterToken('>')
                                                 .build())
+                                .call()
+                                .content());
+        }
+
+        @Override
+        public Answer getOllamaWebSearchRAGAnswer(QuestionRequest request) {
+
+                return new Answer(this.ollamaChatClient.prompt()
+                                .advisors(List.of(this.webSearchRetrievalAugmentationAdvisor))
+                                .user(request.body().question())
                                 .call()
                                 .content());
         }
