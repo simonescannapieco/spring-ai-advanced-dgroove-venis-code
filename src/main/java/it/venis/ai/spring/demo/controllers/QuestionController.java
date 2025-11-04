@@ -9,17 +9,20 @@ import it.venis.ai.spring.demo.model.Question;
 import it.venis.ai.spring.demo.model.QuestionRequest;
 import it.venis.ai.spring.demo.services.QuestionService;
 import it.venis.ai.spring.demo.services.RAGService;
+import it.venis.ai.spring.demo.services.ToolService;
 
 @RestController
 public class QuestionController {
 
     private final QuestionService service;
     private final RAGService ragService;
+    private final ToolService toolService;
 
-    public QuestionController(QuestionService service, RAGService ragService) {
+    public QuestionController(QuestionService service, RAGService ragService, ToolService toolService) {
 
         this.service = service;
         this.ragService = ragService;
+        this.toolService = toolService;
 
     }
 
@@ -76,6 +79,20 @@ public class QuestionController {
     public Answer getOllamaWebSearchRAGAnswer(@RequestBody QuestionRequest request) {
 
         return this.ragService.getOllamaWebSearchRAGAnswer(request);
+
+    }
+
+    @PostMapping("/gemini/ask/tool/local-time")
+    public Answer getGeminiToolLocalTimeAnswer(@RequestBody QuestionRequest request) {
+
+        return this.toolService.getGeminiToolLocalTimeAnswer(request);
+
+    }
+
+    @PostMapping("/ollama/ask/tool/local-time")
+    public Answer getOllamaToolLocalTimeAnswer(@RequestBody QuestionRequest request) {
+
+        return this.toolService.getOllamaToolLocalTimeAnswer(request);
 
     }
 

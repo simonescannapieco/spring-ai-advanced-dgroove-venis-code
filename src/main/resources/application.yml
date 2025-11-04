@@ -2,7 +2,7 @@ spring:
     application:
         name: demo
     profiles:
-        active: rag-document-to-vector-store,docker-model-runner
+        active: rag-document-to-vector-store
     autoconfigure:
         exclude:
             - org.springframework.ai.vectorstore.qdrant.autoconfigure.QdrantVectorStoreAutoConfiguration
@@ -29,7 +29,7 @@ spring:
                 max-retries: 3
             chat:
                 options:
-                    model: VitoF/llama-3.1-8b-italian
+                    model: llama3.2
                     temperature: 0.2
                     top-k: 40
                     top-p: 0.9
