@@ -12,10 +12,10 @@ import org.springframework.context.annotation.Configuration;
 import it.venis.ai.spring.demo.tools.TimeTools;
 
 @Configuration
-public class ToolConfig {
+public class TimeToolsConfig {
     
     @Bean
-    public ChatClient geminiToolChatClient(OpenAiChatModel geminiChatModel, TimeTools timeTools) {
+    public ChatClient geminiTimeToolsChatClient(OpenAiChatModel geminiChatModel, TimeTools timeTools) {
 
         ChatClient.Builder chatClientBuilder = ChatClient.builder(geminiChatModel);
 
@@ -37,7 +37,7 @@ public class ToolConfig {
     }  
 
     @Bean
-    public ChatClient ollamaToolChatClient(OllamaChatModel ollamaChatModel, TimeTools timeTools) {
+    public ChatClient ollamaTimeToolsChatClient(OllamaChatModel ollamaChatModel, TimeTools timeTools) {
 
         ChatClient.Builder chatClientBuilder = ChatClient.builder(ollamaChatModel);
 

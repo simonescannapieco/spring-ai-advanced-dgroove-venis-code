@@ -8,14 +8,14 @@ import it.venis.ai.spring.demo.model.Answer;
 import it.venis.ai.spring.demo.model.QuestionRequest;
 
 @Service
-public class ToolServiceImpl implements ToolService {
+public class TimeToolsServiceImpl implements TimeToolsService {
 
     private final ChatClient geminiToolChatClient;
     private final ChatClient ollamaToolChatClient;
 
-    public ToolServiceImpl(
-            @Qualifier("geminiToolChatClient") ChatClient geminiToolChatClient,
-            @Qualifier("ollamaToolChatClient") ChatClient ollamaToolChatClient) {
+    public TimeToolsServiceImpl(
+            @Qualifier("geminiTimeToolsChatClient") ChatClient geminiToolChatClient,
+            @Qualifier("ollamaTimeToolsChatClient") ChatClient ollamaToolChatClient) {
 
         this.geminiToolChatClient = geminiToolChatClient;
         this.ollamaToolChatClient = ollamaToolChatClient;

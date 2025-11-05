@@ -9,20 +9,20 @@ import it.venis.ai.spring.demo.model.Question;
 import it.venis.ai.spring.demo.model.QuestionRequest;
 import it.venis.ai.spring.demo.services.QuestionService;
 import it.venis.ai.spring.demo.services.RAGService;
-import it.venis.ai.spring.demo.services.ToolService;
+import it.venis.ai.spring.demo.services.TimeToolsService;
 
 @RestController
 public class QuestionController {
 
     private final QuestionService service;
     private final RAGService ragService;
-    private final ToolService toolService;
+    private final TimeToolsService timeToolsService;
 
-    public QuestionController(QuestionService service, RAGService ragService, ToolService toolService) {
+    public QuestionController(QuestionService service, RAGService ragService, TimeToolsService timeToolsService) {
 
         this.service = service;
         this.ragService = ragService;
-        this.toolService = toolService;
+        this.timeToolsService = timeToolsService;
 
     }
 
@@ -85,14 +85,14 @@ public class QuestionController {
     @PostMapping("/gemini/ask/time-tools/local-time")
     public Answer getGeminiToolLocalTimeAnswer(@RequestBody QuestionRequest request) {
 
-        return this.toolService.getGeminiToolLocalTimeAnswer(request);
+        return this.timeToolsService.getGeminiToolLocalTimeAnswer(request);
 
     }
 
     @PostMapping("/ollama/ask/time-tools/local-time")
     public Answer getOllamaToolLocalTimeAnswer(@RequestBody QuestionRequest request) {
 
-        return this.toolService.getOllamaToolLocalTimeAnswer(request);
+        return this.timeToolsService.getOllamaToolLocalTimeAnswer(request);
 
     }
 
