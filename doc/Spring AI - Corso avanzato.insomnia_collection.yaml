@@ -35,7 +35,7 @@ collection:
     meta:
       id: req_8b7e9c98b79149a1bb63d6c4fef49c05
       created: 1761045344710
-      modified: 1761748752364
+      modified: 1762172936808
       isPrivate: false
       sortKey: -1759485863236.5
     method: POST
@@ -257,6 +257,58 @@ collection:
         	"model": "hf.co/unsloth/embeddinggemma-300m-gguf",
           "input": "Questa è una frase di prova"
         }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/11.0.2
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:8080/ollama/ask/time-tools/local-time
+    name: Domanda Tool-aware a Ollama
+    meta:
+      id: req_fb1da6d23684453db8084d0b42b5c4e7
+      created: 1762172969887
+      modified: 1762329991814
+      isPrivate: false
+      sortKey: -1758028215060.5117
+    method: POST
+    body:
+      mimeType: application/json
+      text: "{\"username\": \"Simone1982\", \"body\": {\"question\":\"Quale è l'ora
+        corrente a Parigi?\"}}"
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/11.0.2
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:8080/gemini/ask/time-tools/local-time
+    name: Domanda Tool-aware a Gemini
+    meta:
+      id: req_6be5a846e6ef4395abe7d98f275fac65
+      created: 1762173891721
+      modified: 1762330032946
+      isPrivate: false
+      sortKey: -1758022476363.7559
+    method: POST
+    body:
+      mimeType: application/json
+      text: "{\"username\": \"Simone1982\", \"body\": {\"question\":\"Quale è l'ora
+        corrente nella mia posizione?\"}}"
     headers:
       - name: Content-Type
         value: application/json

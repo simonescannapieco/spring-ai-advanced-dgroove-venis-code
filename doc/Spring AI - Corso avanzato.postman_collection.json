@@ -306,6 +306,68 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "Domanda Tool-aware a Ollama",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"Simone1982\",\n    \"body\": {\n        \"question\": \"Quale è l'ora corrente a Parigi?\"\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/ollama/ask/time-tools/local-time",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"ollama",
+						"ask",
+						"time-tools",
+						"local-time"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Domanda Tool-aware a Gemini",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"Simone1982\",\n    \"body\": {\n        \"question\": \"Quale è l'ora corrente nella mia posizione?\"\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/gemini/ask/time-tools/local-time",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"gemini",
+						"ask",
+						"time-tools",
+						"local-time"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }
