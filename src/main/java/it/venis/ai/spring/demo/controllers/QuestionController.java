@@ -82,14 +82,14 @@ public class QuestionController {
 
     }
 
-    @PostMapping("/gemini/ask/tool/local-time")
+    @PostMapping("/gemini/ask/time-tools/local-time")
     public Answer getGeminiToolLocalTimeAnswer(@RequestBody QuestionRequest request) {
 
         return this.toolService.getGeminiToolLocalTimeAnswer(request);
 
     }
 
-    @PostMapping("/ollama/ask/tool/local-time")
+    @PostMapping("/ollama/ask/time-tools/local-time")
     public Answer getOllamaToolLocalTimeAnswer(@RequestBody QuestionRequest request) {
 
         return this.toolService.getOllamaToolLocalTimeAnswer(request);
