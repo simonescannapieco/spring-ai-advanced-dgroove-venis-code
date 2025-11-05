@@ -14,7 +14,7 @@ public class TimeTools {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(TimeTools.class);
 
-    @Tool(name="getCurrentLocalTime", description = "Ottieni l'orario corrente nella timezone dell'utente.")
+    @Tool(name = "getCurrentLocalTime", description = "Ottieni l'orario corrente nella timezone dell'utente.")
     String getCurrentLocalTime() {
 
         LOGGER.info("Ritorno dell'orario corrente nella timezone dell'utente");
@@ -22,13 +22,11 @@ public class TimeTools {
 
     }
 
-    @Tool(name = "getCurrentTime",
-            description = "Ottieni l'orario corrente nella timezone specificata.")
-    public String getCurrentTime(@ToolParam(
-            description = "Valore che rappresenta la timezone.") String timeZone) {
+    @Tool(name = "getCurrentTime", description = "Ottieni l'orario corrente nella timezone specificata.")
+    public String getCurrentTime(@ToolParam(description = "Valore che rappresenta la timezone.") String timeZone) {
 
         LOGGER.info("Ritorno dell'orario corrente nella timezone {}", timeZone);
         return LocalTime.now(ZoneId.of(timeZone)).toString();
-        
+
     }
 }
