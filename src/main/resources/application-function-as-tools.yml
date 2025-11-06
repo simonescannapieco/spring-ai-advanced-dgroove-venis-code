@@ -1,0 +1,3 @@
+demo:
+    weather:
+        api-key: ${OPENWEATHERMAP_API_KEY}

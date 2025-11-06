@@ -2,7 +2,7 @@ spring:
     application:
         name: demo
     profiles:
-        active: rag-document-to-vector-store
+        active: rag-document-to-vector-store,function-as-tools
     autoconfigure:
         exclude:
             - org.springframework.ai.vectorstore.qdrant.autoconfigure.QdrantVectorStoreAutoConfiguration

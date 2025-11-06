@@ -1,5 +1,8 @@
 package it.venis.ai.spring.demo.controllers;
 
+import org.springframework.ai.chat.client.ChatClient;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -7,22 +10,34 @@ import org.springframework.web.bind.annotation.RestController;
 import it.venis.ai.spring.demo.model.Answer;
 import it.venis.ai.spring.demo.model.Question;
 import it.venis.ai.spring.demo.model.QuestionRequest;
+import it.venis.ai.spring.demo.model.WeatherRequest;
+import it.venis.ai.spring.demo.model.WeatherResponse;
 import it.venis.ai.spring.demo.services.QuestionService;
 import it.venis.ai.spring.demo.services.RAGService;
 import it.venis.ai.spring.demo.services.TimeToolsService;
 
 @RestController
+@Configuration
 public class QuestionController {
 
     private final QuestionService service;
     private final RAGService ragService;
     private final TimeToolsService timeToolsService;
 
-    public QuestionController(QuestionService service, RAGService ragService, TimeToolsService timeToolsService) {
+    private final ChatClient geminiWeatherToolsChatClient;
+    private final ChatClient ollamaWeatherToolsChatClient;
+
+    public QuestionController(QuestionService service,
+            RAGService ragService,
+            TimeToolsService timeToolsService,
+            @Qualifier("geminiWeatherToolsChatClient") ChatClient geminiWeatherToolsChatClient,
+            @Qualifier("ollamaWeatherToolsChatClient") ChatClient ollamaWeatherToolsChatClient) {
 
         this.service = service;
         this.ragService = ragService;
         this.timeToolsService = timeToolsService;
+        this.geminiWeatherToolsChatClient = geminiWeatherToolsChatClient;
+        this.ollamaWeatherToolsChatClient = ollamaWeatherToolsChatClient;
 
     }
 
@@ -94,6 +109,24 @@ public class QuestionController {
 
         return this.timeToolsService.getOllamaToolLocalTimeAnswer(request);
 
+    }
+
+    @PostMapping("/gemini/ask/weather-tools/temperature")
+    public WeatherResponse getGeminiWeatherToolAnswer(@RequestBody WeatherRequest request) {
+
+        return this.geminiWeatherToolsChatClient
+                .prompt()
+                .call()
+                .entity(WeatherResponse.class);
+    }
+
+    @PostMapping("/ollama/ask/weather-tools/temperature")
+    public WeatherResponse getOllamaWeatherToolAnswer(@RequestBody WeatherRequest request) {
+
+        return this.ollamaWeatherToolsChatClient
+                .prompt()
+                .call()
+                .entity(WeatherResponse.class);
     }
 
 }
