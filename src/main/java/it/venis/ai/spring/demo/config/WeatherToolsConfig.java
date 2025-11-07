@@ -14,15 +14,15 @@ import org.springframework.context.annotation.Configuration;
 
 import it.venis.ai.spring.demo.advisors.OllamaCostSavingsAdvisor;
 import it.venis.ai.spring.demo.model.WeatherRequest;
-import it.venis.ai.spring.demo.services.WeatherService;
+import it.venis.ai.spring.demo.services.TemperatureService;
 
 @Configuration
 public class WeatherToolsConfig {
 
-    public static final String GET_WEATHER_IN_LOCATION_FUNCTION_NAME = "getWeatherInLocation";
+    public static final String GET_TEMP_IN_LOCATION_FUNCTION_NAME = "getTemperatureInLocation";
 
     ToolCallback toolCallback = FunctionToolCallback
-            .builder(GET_WEATHER_IN_LOCATION_FUNCTION_NAME, new WeatherService())
+            .builder(GET_TEMP_IN_LOCATION_FUNCTION_NAME, new TemperatureService())
             .description("Ottieni la temperatura corrente nella località specificata.")
             .inputType(WeatherRequest.class)
             .toolMetadata(ToolMetadata.builder()
