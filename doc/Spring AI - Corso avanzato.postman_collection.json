@@ -308,7 +308,7 @@
 			"response": []
 		},
 		{
-			"name": "Domanda Tool-aware a Ollama",
+			"name": "Domanda method-as-tool a Ollama",
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -332,14 +332,14 @@
 						"ollama",
 						"ask",
 						"time-tools",
-						"local-time"
+						"time"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "Domanda Tool-aware a Gemini",
+			"name": "Domanda method-as-tool a Gemini",
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -363,7 +363,7 @@
 						"gemini",
 						"ask",
 						"time-tools",
-						"local-time"
+						"time"
 					]
 				}
 			},
