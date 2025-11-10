@@ -22,13 +22,13 @@ public class WeatherToolsConfig {
     public static final String GET_TEMP_IN_LOCATION_FUNCTION_NAME = "getTemperatureInLocation";
 
     ToolCallback toolCallback = FunctionToolCallback
-            .builder(GET_TEMP_IN_LOCATION_FUNCTION_NAME, new TemperatureService())
-            .description("Ottieni la temperatura corrente nella località specificata.")
-            .inputType(WeatherRequest.class)
-            .toolMetadata(ToolMetadata.builder()
+        .builder(GET_TEMP_IN_LOCATION_FUNCTION_NAME, new TemperatureService())
+        .description("Ottieni la temperatura corrente nella località specificata.")
+        .inputType(WeatherRequest.class)
+        .toolMetadata(ToolMetadata.builder()
             .returnDirect(true)
             .build())
-            .build();
+        .build();
 
     @Bean
     public ChatClient geminiWeatherToolsChatClient(OpenAiChatModel geminiChatModel) {
@@ -42,7 +42,7 @@ public class WeatherToolsConfig {
                     """
                         Sei un assistente AI di nome WeatherGeminiBot, addestrato per fornire
                         informazioni meteo alle persone.
-                        Utilizza quando possibile il tool 'getWeatherInLocation'.
+                        Utilizza quando possibile il tool 'getTemperatureInLocation'.
                     """)
                 .build();
     }

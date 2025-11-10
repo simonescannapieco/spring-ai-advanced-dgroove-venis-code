@@ -4,12 +4,12 @@ import java.util.function.Function;
 
 import it.venis.ai.spring.demo.data.Unit;
 import it.venis.ai.spring.demo.model.WeatherRequest;
-import it.venis.ai.spring.demo.model.WeatherResponse;
+import it.venis.ai.spring.demo.model.TemperatureResponse;
 
-public class TemperatureService implements Function<WeatherRequest, WeatherResponse> {
+public class TemperatureService implements Function<WeatherRequest, TemperatureResponse> {
     
-    public WeatherResponse apply(WeatherRequest request) {
-        return new WeatherResponse(30.0, Unit.C);
+    public TemperatureResponse apply(WeatherRequest request) {
+        return new TemperatureResponse(30.0, Unit.C);
     }
     
 }

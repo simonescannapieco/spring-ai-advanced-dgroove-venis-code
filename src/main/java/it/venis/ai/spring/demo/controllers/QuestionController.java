@@ -11,7 +11,7 @@ import it.venis.ai.spring.demo.model.Answer;
 import it.venis.ai.spring.demo.model.Question;
 import it.venis.ai.spring.demo.model.QuestionRequest;
 import it.venis.ai.spring.demo.model.WeatherRequest;
-import it.venis.ai.spring.demo.model.WeatherResponse;
+import it.venis.ai.spring.demo.model.TemperatureResponse;
 import it.venis.ai.spring.demo.services.QuestionService;
 import it.venis.ai.spring.demo.services.RAGService;
 import it.venis.ai.spring.demo.services.TimeToolsService;
@@ -112,21 +112,21 @@ public class QuestionController {
     }
 
     @PostMapping("/gemini/ask/weather-tools/temperature")
-    public WeatherResponse getGeminiWeatherToolAnswer(@RequestBody WeatherRequest request) {
+    public TemperatureResponse getGeminiTemperatureToolAnswer(@RequestBody WeatherRequest request) {
 
         return this.geminiWeatherToolsChatClient
                 .prompt()
                 .call()
-                .entity(WeatherResponse.class);
+                .entity(TemperatureResponse.class);
     }
 
     @PostMapping("/ollama/ask/weather-tools/temperature")
-    public WeatherResponse getOllamaWeatherToolAnswer(@RequestBody WeatherRequest request) {
+    public TemperatureResponse getOllamaTemperatureToolAnswer(@RequestBody WeatherRequest request) {
 
         return this.ollamaWeatherToolsChatClient
                 .prompt()
                 .call()
-                .entity(WeatherResponse.class);
+                .entity(TemperatureResponse.class);
     }
 
 }
