@@ -322,7 +322,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/ollama/ask/time-tools/local-time",
+					"raw": "http://localhost:8080/ollama/ask/time-tools/time",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -353,7 +353,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/gemini/ask/time-tools/local-time",
+					"raw": "http://localhost:8080/gemini/ask/time-tools/time",
 					"protocol": "http",
 					"host": [
 						"localhost"
