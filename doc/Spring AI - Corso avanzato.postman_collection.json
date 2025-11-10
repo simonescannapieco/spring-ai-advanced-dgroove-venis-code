@@ -339,7 +339,7 @@
 			"response": []
 		},
 		{
-			"name": "Domanda method-as-tool a Ollama",
+			"name": "Domanda method-as-tool-aware a Ollama",
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -370,7 +370,7 @@
 			"response": []
 		},
 		{
-			"name": "Domanda method-as-tool a Gemini",
+			"name": "Domanda method-as-tool-aware a Gemini",
 			"request": {
 				"method": "POST",
 				"header": [],
