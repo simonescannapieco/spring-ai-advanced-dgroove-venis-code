@@ -270,6 +270,32 @@ collection:
         send: true
         store: true
       rebuildPath: true
+  - url: http://localhost:8080/ollama/ask/rag/web-search
+    name: Domanda RAG a Ollama - Web Search
+    meta:
+      id: req_dcc58fd2fc8a40e9a05d259703a4cc87
+      created: 1761924110525
+      modified: 1761924124854
+      isPrivate: false
+      sortKey: -1758028215060.5117
+    method: POST
+    body:
+      mimeType: application/json
+      text: '{"username": "Simone1982", "body": {"question":"Che tempo fa oggi a
+        Verona?"}}'
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/11.0.2
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
   - url: http://localhost:8080/ollama/ask/time-tools/time
     name: Domanda Tool-aware a Ollama
     meta:
