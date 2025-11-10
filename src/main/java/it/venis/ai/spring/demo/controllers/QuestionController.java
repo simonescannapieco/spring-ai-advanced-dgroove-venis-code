@@ -97,17 +97,17 @@ public class QuestionController {
 
     }
 
-    @PostMapping("/gemini/ask/time-tools/local-time")
+    @PostMapping("/gemini/ask/time-tools/time")
     public Answer getGeminiToolLocalTimeAnswer(@RequestBody QuestionRequest request) {
 
-        return this.timeToolsService.getGeminiToolLocalTimeAnswer(request);
+        return this.timeToolsService.getGeminiTimeToolsAnswer(request);
 
     }
 
-    @PostMapping("/ollama/ask/time-tools/local-time")
+    @PostMapping("/ollama/ask/time-tools/time")
     public Answer getOllamaToolLocalTimeAnswer(@RequestBody QuestionRequest request) {
 
-        return this.timeToolsService.getOllamaToolLocalTimeAnswer(request);
+        return this.timeToolsService.getOllamaTimeToolsAnswer(request);
 
     }
 

@@ -5,8 +5,8 @@ import it.venis.ai.spring.demo.model.QuestionRequest;
 
 public interface TimeToolsService {
     
-    public Answer getGeminiToolLocalTimeAnswer(QuestionRequest request);
+    public Answer getGeminiTimeToolsAnswer(QuestionRequest request);
 
-    public Answer getOllamaToolLocalTimeAnswer(QuestionRequest request);
+    public Answer getOllamaTimeToolsAnswer(QuestionRequest request);
     
 }
