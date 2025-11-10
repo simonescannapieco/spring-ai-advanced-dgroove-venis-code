@@ -23,7 +23,7 @@ public class TimeToolsServiceImpl implements TimeToolsService {
     }
 
     @Override
-    public Answer getGeminiToolLocalTimeAnswer(QuestionRequest request) {
+    public Answer getGeminiTimeToolsAnswer(QuestionRequest request) {
 
         return new Answer(this.geminiToolChatClient
                 .prompt()
@@ -34,7 +34,7 @@ public class TimeToolsServiceImpl implements TimeToolsService {
     }
 
     @Override
-    public Answer getOllamaToolLocalTimeAnswer(QuestionRequest request) {
+    public Answer getOllamaTimeToolsAnswer(QuestionRequest request) {
 
         return new Answer(this.ollamaToolChatClient
                 .prompt()
