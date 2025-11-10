@@ -1,7 +1,7 @@
 # Spring AI
 ## Generative Artificial Intelligence con Java - Corso avanzato
 
-### *Tool calling*: Servizio FAT programmatico Ollama + Gemini per richiesta ora locale/per fuso orario 
+### *Tool calling*: Servizio FAT programmatico Ollama + Gemini per richiesta temperatura (*mock*) 
 
 1. Creazione modelli ed enumeratori per WeatherRequest, TemperatureResponse e Unit
 2. Creazione *tool* per richiesta temperatura
