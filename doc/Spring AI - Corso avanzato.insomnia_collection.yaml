@@ -270,7 +270,7 @@ collection:
         send: true
         store: true
       rebuildPath: true
-  - url: http://localhost:8080/ollama/ask/time-tools/local-time
+  - url: http://localhost:8080/ollama/ask/time-tools/time
     name: Domanda Tool-aware a Ollama
     meta:
       id: req_fb1da6d23684453db8084d0b42b5c4e7
@@ -296,7 +296,7 @@ collection:
         send: true
         store: true
       rebuildPath: true
-  - url: http://localhost:8080/gemini/ask/time-tools/local-time
+  - url: http://localhost:8080/gemini/ask/time-tools/time
     name: Domanda Tool-aware a Gemini
     meta:
       id: req_6be5a846e6ef4395abe7d98f275fac65
