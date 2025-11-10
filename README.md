@@ -1,12 +1,14 @@
 # Spring AI
 ## Generative Artificial Intelligence con Java - Corso avanzato
 
-### Docker Model Runner: multi configurazione Ollama + Gemma 
+### Servizio RAG Ollama *web search* 
 
-1. *Pull* modello LLM ed *embedder* in Model Runner
-2. *Test* del raggiungimento del servizio *chat/embed* con [Postman](https://github.com/simonescannapieco/spring-ai-advanced-dgroove-venis-code/blob/10-spring-ai-gemma-ollama-docker-model-runner/doc/Spring%20AI%20-%20Corso%20avanzato.postman_collection.json)/[Insomnia](https://github.com/simonescannapieco/spring-ai-advanced-dgroove-venis-code/blob/10-spring-ai-gemma-ollama-docker-model-runner/doc/Spring%20AI%20-%20Corso%20avanzato.insomnia_collection.yaml)
-3. Creazione profilo applicativo
-4. Modifica proprietà applicativo
-5. *Test* delle funzionalità con [Postman](https://github.com/simonescannapieco/spring-ai-advanced-dgroove-venis-code/blob/10-spring-ai-gemma-ollama-docker-model-runner/doc/Spring%20AI%20-%20Corso%20avanzato.postman_collection.json)/[Insomnia](https://github.com/simonescannapieco/spring-ai-advanced-dgroove-venis-code/blob/10-spring-ai-gemma-ollama-docker-model-runner/doc/Spring%20AI%20-%20Corso%20avanzato.insomnia_collection.yaml)
+1. Creazione *account* Tavily e API *key*
+2. Modifica variabili di ambiente
+3. Creazione implementazione *document retriever* tramite *web search*
+4. Modifica configurazione RAG
+5. Modifica interfaccia e implementazione servizio
+6. Modifica proprietà applicativo
+7. *Test* delle funzionalità con [Postman](https://github.com/simonescannapieco/spring-ai-advanced-dgroove-venis-code/blob/11-spring-ai-gemini-ollama-rag-web-search/doc/Spring%20AI%20-%20Corso%20avanzato.postman_collection.json)/[Insomnia](https://github.com/simonescannapieco/spring-ai-advanced-dgroove-venis-code/blob/11-spring-ai-gemini-ollama-rag-web-search/doc/Spring%20AI%20-%20Corso%20avanzato.insomnia_collection.yaml)
 
-Per ulteriori informazioni, si rimanda al [documento di esercitazione](https://github.com/simonescannapieco/spring-ai-advanced-dgroove-venis-slides/blob/master/practice/30_spring_ai_gemma_ollama_docker_model_runner/out/30_spring_ai_gemma_ollama_docker_model_runner_handout.pdf).
+Per ulteriori informazioni, si rimanda al [documento di esercitazione](https://github.com/simonescannapieco/spring-ai-advanced-dgroove-venis-slides/blob/master/practice/31_spring_ai_gemini_ollama_rag_web_search/out/31_spring_ai_gemini_ollama_rag_web_search_handout.pdf).
