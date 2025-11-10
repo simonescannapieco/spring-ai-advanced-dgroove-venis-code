@@ -306,6 +306,37 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "Domanda RAG a Ollama - Web Search",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"Simone1982\",\n    \"body\": {\n        \"question\": \"Che tempo fa oggi a Verona?\"\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/ollama/ask/rag/web-search",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"ollama",
+						"ask",
+						"rag",
+						"web-search"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }
