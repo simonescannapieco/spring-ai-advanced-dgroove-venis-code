@@ -1,22 +1,25 @@
 type: collection.insomnia.rest/5.0
 name: Spring AI - corso avanzato
 meta:
-  id: wrk_2c356df69b02479685a91ad40fccd3ae
-  created: 1761815906992
-  modified: 1761815906992
+  id: wrk_f00c782c2c044d589e72d53604de5ab4
+  created: 1761920796332
+  modified: 1761920796332
 collection:
   - url: http://localhost:8080/gemini/ask
     name: Domanda a Gemini
     meta:
-      id: req_d4cce500b28c4bbb8816355e8d3cb6ad
+      id: req_68a6209d4aba4a8ba213cbeadc1a5a6d
       created: 1760954988806
-      modified: 1761045330137
+      modified: 1762425207825
       isPrivate: false
       sortKey: -1760954988806
     method: POST
     body:
       mimeType: application/json
-      text: '{"question": "Dimmi il nome che i tuoi sviluppatori ti hanno dato"}'
+      text: |-
+        {
+        	"question": "Dimmi il nome che i tuoi sviluppatori ti hanno dato"
+        }
     headers:
       - name: Content-Type
         value: application/json
@@ -33,9 +36,9 @@ collection:
   - url: http://localhost:8080/ollama/ask
     name: Domanda a Ollama
     meta:
-      id: req_8b7e9c98b79149a1bb63d6c4fef49c05
+      id: req_c625db7906704900a189d627460bd25e
       created: 1761045344710
-      modified: 1762172936808
+      modified: 1762425202301
       isPrivate: false
       sortKey: -1759485863236.5
     method: POST
@@ -43,7 +46,7 @@ collection:
       mimeType: application/json
       text: |-
         {
-        	"question": "Come sei stato addestrato?"
+        	"question": "Dimmi il nome che i tuoi sviluppatori ti hanno dato"
         }
     headers:
       - name: Content-Type
@@ -61,9 +64,9 @@ collection:
   - url: http://localhost:8080/ollama/ask/default
     name: Domanda di default a Ollama
     meta:
-      id: req_0aa0b7cd290c4dab854b8e97c4b11141
+      id: req_114cb8f5ea674db49bd52547e819e898
       created: 1761048659429
-      modified: 1761048702507
+      modified: 1762435102880
       isPrivate: false
       sortKey: -1758751300451.75
     method: POST
@@ -86,15 +89,15 @@ collection:
   - url: http://localhost:8080/ollama/ask/memory
     name: Domanda memory-aware a Ollama
     meta:
-      id: req_281bfd556935435cb1e452f46a528036
+      id: req_5a200d62e9944aa9a22336038f793838
       created: 1761211471230
-      modified: 1761230457035
+      modified: 1762444146518
       isPrivate: false
       sortKey: -1758384019059.375
     method: POST
     body:
       mimeType: application/json
-      text: '{"question":"Ciao, come ti chiami?"}'
+      text: '{"question":"Ciao chiamo Andrea, come ti chiami?"}'
     headers:
       - name: Content-Type
         value: application/json
@@ -111,7 +114,7 @@ collection:
   - url: http://localhost:8080/ollama/ask/memory/user
     name: Domanda memory-aware a Ollama - Utente Simone
     meta:
-      id: req_32dbaa0c436a450591edf2a7401304a8
+      id: req_54c19f55a52d4630a1df5fff397ab029
       created: 1761230407783
       modified: 1761231311615
       isPrivate: false
@@ -137,7 +140,7 @@ collection:
   - url: http://localhost:8080/ollama/ask/memory/user
     name: Domanda memory-aware a Ollama - Utente Andrea
     meta:
-      id: req_64d12232b7404a32bec281521f2d4697
+      id: req_42ea29283e32453aba094ae6ac2571c8
       created: 1761230526394
       modified: 1761231339192
       isPrivate: false
@@ -163,9 +166,9 @@ collection:
   - url: http://localhost:8080/ollama/ask/rag
     name: Domanda RAG a Ollama
     meta:
-      id: req_3a3a0c398e40416f830cb7304e60c812
+      id: req_e9efc5f133dd4b25a9ed76c775065626
       created: 1761747533944
-      modified: 1761840902347
+      modified: 1762190191174
       isPrivate: false
       sortKey: -1758062647841.0469
     method: POST
@@ -189,7 +192,7 @@ collection:
   - url: http://localhost:8080/gemini/ask/rag
     name: Domanda RAG a Gemini
     meta:
-      id: req_848e666c0585412a8a44517a1e204e2f
+      id: req_f06f5f9889dd49f693c89325041fabb0
       created: 1761748606669
       modified: 1761909676187
       isPrivate: false
@@ -215,9 +218,9 @@ collection:
   - url: http://172.17.0.1:12434/engines/llama.cpp/v1/chat/completions
     name: Test Docker Model Runner - Chat
     meta:
-      id: req_79d553ff40d643b993cbd5cf1f0886e6
+      id: req_0663fea36e974161942941a9d4e44ece
       created: 1761907273929
-      modified: 1761907511867
+      modified: 1761920902612
       isPrivate: false
       sortKey: -1758039692654.0234
     method: POST
@@ -225,8 +228,13 @@ collection:
       mimeType: application/json
       text: |-
         {
-          "model": "ai/gemma3", 
-          "messages": [{"role": "user", "content": "Ciao! Come ti chiami?"}]
+        	"model": "ai/gemma3",
+        	"messages": [
+        		{
+        			"role": "user",
+        			"content": "Ciao! Come ti chiami?"
+        		}
+        	]
         }
     headers:
       - name: Content-Type
@@ -244,9 +252,9 @@ collection:
   - url: http://172.17.0.1:12434/engines/llama.cpp/v1/embeddings
     name: Test Docker Model Runner - Embedding
     meta:
-      id: req_92b3ffbd9c3c458bbeff590979eda049
+      id: req_462372fd6b154558b774409b381d9880
       created: 1761907520676
-      modified: 1761907573946
+      modified: 1761920913447
       isPrivate: false
       sortKey: -1758028215160.5117
     method: POST
@@ -255,7 +263,7 @@ collection:
       text: |-
         {
         	"model": "hf.co/unsloth/embeddinggemma-300m-gguf",
-          "input": "Questa è una frase di prova"
+        	"input": "Questa è una frase di prova"
         }
     headers:
       - name: Content-Type
@@ -270,19 +278,19 @@ collection:
         send: true
         store: true
       rebuildPath: true
-  - url: http://localhost:8080/ollama/ask/time-tools/local-time
-    name: Domanda Tool-aware a Ollama
+  - url: http://localhost:8080/ollama/ask/rag/web-search
+    name: Domanda RAG a Ollama - Web Search
     meta:
-      id: req_fb1da6d23684453db8084d0b42b5c4e7
-      created: 1762172969887
-      modified: 1762329991814
+      id: req_dcc58fd2fc8a40e9a05d259703a4cc87
+      created: 1761924110525
+      modified: 1761924124854
       isPrivate: false
       sortKey: -1758028215060.5117
     method: POST
     body:
       mimeType: application/json
-      text: "{\"username\": \"Simone1982\", \"body\": {\"question\":\"Quale è l'ora
-        corrente a Parigi?\"}}"
+      text: '{"username": "Simone1982", "body": {"question":"Che tempo fa oggi a
+        Verona?"}}'
     headers:
       - name: Content-Type
         value: application/json
@@ -296,19 +304,95 @@ collection:
         send: true
         store: true
       rebuildPath: true
-  - url: http://localhost:8080/gemini/ask/time-tools/local-time
-    name: Domanda Tool-aware a Gemini
+  - url: http://localhost:8080/ollama/ask/time-tools/time
+    name: Domanda method-as-tool-aware a Ollama
     meta:
-      id: req_6be5a846e6ef4395abe7d98f275fac65
-      created: 1762173891721
-      modified: 1762330032946
+      id: req_00206c6f50304d8b88c2aa56fe69ce16
+      created: 1762190206225
+      modified: 1762775270971
       isPrivate: false
-      sortKey: -1758022476363.7559
+      sortKey: -1758028214960.5117
     method: POST
     body:
       mimeType: application/json
-      text: "{\"username\": \"Simone1982\", \"body\": {\"question\":\"Quale è l'ora
-        corrente nella mia posizione?\"}}"
+      text: '{"username": "Simone1982", "body": {"question":"Che ore sono a
+        Parigi?"}}'
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/11.0.2
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:8080/gemini/ask/time-tools/time
+    name: Domanda method-as-tool-aware a Gemini
+    meta:
+      id: req_c548c8267242462798d7b2c4a64b463d
+      created: 1762190291813
+      modified: 1762775321432
+      isPrivate: false
+      sortKey: -1758022476313.7559
+    method: POST
+    body:
+      mimeType: application/json
+      text: '{"username": "Simone1982", "body": {"question":"Che ore sono nella mia
+        posizione?"}}'
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/11.0.2
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:8080/ollama/ask/weather-tools/temperature
+    name: Domanda function-as-tool-aware a Ollama
+    meta:
+      id: req_ebcf14ab8f0040499a2077aed31dcc39
+      created: 1762371262455
+      modified: 1762372306317
+      isPrivate: false
+      sortKey: -1758022476213.7559
+    method: POST
+    body:
+      mimeType: application/json
+      text: '{"location": "Venezia", "unit": "C"}'
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/11.0.2
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:8080/gemini/ask/weather-tools/temperature
+    name: Domanda function-as-tool-aware a Gemini
+    meta:
+      id: req_95dac865a9f2404fa6ede9418b588b10
+      created: 1762371291363
+      modified: 1762371345535
+      isPrivate: false
+      sortKey: -1758019606940.378
+    method: POST
+    body:
+      mimeType: application/json
+      text: '{"location": "Venezia", "unit": "C"}'
     headers:
       - name: Content-Type
         value: application/json
@@ -325,13 +409,13 @@ collection:
 cookieJar:
   name: Default Jar
   meta:
-    id: jar_4a8438c0629e4c11aa0a2a2becd2992c
+    id: jar_4b19fb501ebd4bc087c46062a99246ff
     created: 1760954971407
     modified: 1760954971407
 environments:
   name: Base Environment
   meta:
-    id: env_ada164626c8143589b97f7c491433479
+    id: env_f9f6a73982964ee6a6421de56b94e267
     created: 1760954971406
     modified: 1760954971406
     isPrivate: false
