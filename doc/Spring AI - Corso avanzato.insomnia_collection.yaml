@@ -309,14 +309,19 @@ collection:
     meta:
       id: req_00206c6f50304d8b88c2aa56fe69ce16
       created: 1762190206225
-      modified: 1762775270971
+      modified: 1762791357088
       isPrivate: false
       sortKey: -1758028214960.5117
     method: POST
     body:
       mimeType: application/json
-      text: '{"username": "Simone1982", "body": {"question":"Che ore sono a
-        Parigi?"}}'
+      text: |-
+        {
+        	"username": "Simone1982",
+        	"body": {
+        		"question": "Che ore sono a New York?"
+        	}
+        }
     headers:
       - name: Content-Type
         value: application/json
@@ -335,7 +340,7 @@ collection:
     meta:
       id: req_c548c8267242462798d7b2c4a64b463d
       created: 1762190291813
-      modified: 1762775321432
+      modified: 1762784428574
       isPrivate: false
       sortKey: -1758022476313.7559
     method: POST
@@ -361,7 +366,7 @@ collection:
     meta:
       id: req_ebcf14ab8f0040499a2077aed31dcc39
       created: 1762371262455
-      modified: 1762372306317
+      modified: 1762784419074
       isPrivate: false
       sortKey: -1758022476213.7559
     method: POST
@@ -398,6 +403,66 @@ collection:
         value: application/json
       - name: User-Agent
         value: insomnia/11.0.2
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:8080/ollama/ask/help-desk-tools/help-desk
+    name: Domanda help desk a Ollama
+    meta:
+      id: req_6873a29b71d549a0884e435f2685b1c7
+      created: 1762939694517
+      modified: 1762958052231
+      isPrivate: false
+      sortKey: -1758019606840.378
+    method: POST
+    parameters:
+      - id: pair_040c03b865ac4b27ad1faf1079587ec6
+        name: message
+        value: Dammi la lista dei ticket aperti
+        disabled: false
+    headers:
+      - name: User-Agent
+        value: insomnia/11.0.2
+        id: pair_520636dee03c4479ac11a42815826a1d
+      - id: pair_f979443be511484fa12ebe92cc3a08fa
+        name: username
+        value: Simone1982
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:8080/gemini/ask/help-desk-tools/help-desk
+    name: Domanda help desk a Gemini
+    meta:
+      id: req_8ccfc4bbc978424495f06a58c5ba7659
+      created: 1762958027632
+      modified: 1762958038866
+      isPrivate: false
+      sortKey: -1758018889547.0334
+    method: POST
+    parameters:
+      - id: pair_040c03b865ac4b27ad1faf1079587ec6
+        name: message
+        value: Dammi la lista dei ticket aperti
+        disabled: false
+    headers:
+      - name: User-Agent
+        value: insomnia/11.0.2
+        id: pair_520636dee03c4479ac11a42815826a1d
+      - id: pair_f979443be511484fa12ebe92cc3a08fa
+        name: username
+        value: Andrea1982
+        disabled: false
     settings:
       renderRequestBody: true
       encodeUrl: true

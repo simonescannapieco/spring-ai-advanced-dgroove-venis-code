@@ -461,6 +461,74 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "Domanda help desk a Gemini",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "username",
+						"value": "Simone1982",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/gemini/ask/help-desk-tools/help-desk?message",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"gemini",
+						"ask",
+						"help-desk-tools",
+						"help-desk"
+					],
+					"query": [
+						{
+							"key": "message",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Domanda help desk a Ollama",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "username",
+						"value": "Simone1982",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/ollama/ask/help-desk-tools/help-desk?message",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"ollama",
+						"ask",
+						"help-desk-tools",
+						"help-desk"
+					],
+					"query": [
+						{
+							"key": "message",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }
