@@ -3,7 +3,7 @@
 
 ### *Tool calling*: Servizio FAT programmatico Ollama + Gemini per richiesta temperatura (*mock*) 
 
-1. Creazione modelli ed enumeratori per WeatherRequest, TemperatureResponse e Unit
+1. Creazione modelli ed enumeratori per `WeatherRequest`, `TemperatureResponse` e `Unit`
 2. Creazione *tool* per richiesta temperatura
 3. Configurazione *client* Ollama e Gemini per utilizzo *tool*
 4. Creazione interfaccia e implementazione servizio
