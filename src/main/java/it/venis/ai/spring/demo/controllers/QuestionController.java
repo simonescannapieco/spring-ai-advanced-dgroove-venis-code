@@ -1,10 +1,16 @@
 package it.venis.ai.spring.demo.controllers;
 
+import java.util.Map;
+
 import org.springframework.ai.chat.client.ChatClient;
+import org.springframework.ai.chat.memory.ChatMemory;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import it.venis.ai.spring.demo.model.Answer;
@@ -26,18 +32,24 @@ public class QuestionController {
 
     private final ChatClient geminiWeatherToolsChatClient;
     private final ChatClient ollamaWeatherToolsChatClient;
+    private final ChatClient geminiHelpDeskToolsChatClient;
+    private final ChatClient ollamaHelpDeskToolsChatClient;
 
     public QuestionController(QuestionService service,
             RAGService ragService,
             TimeToolsService timeToolsService,
             @Qualifier("geminiWeatherToolsChatClient") ChatClient geminiWeatherToolsChatClient,
-            @Qualifier("ollamaWeatherToolsChatClient") ChatClient ollamaWeatherToolsChatClient) {
+            @Qualifier("ollamaWeatherToolsChatClient") ChatClient ollamaWeatherToolsChatClient,
+            @Qualifier("geminiHelpDeskToolsChatClient") ChatClient geminiHelpDeskToolsChatClient,
+            @Qualifier("ollamaHelpDeskToolsChatClient") ChatClient ollamaHelpDeskToolsChatClient) {
 
         this.service = service;
         this.ragService = ragService;
         this.timeToolsService = timeToolsService;
         this.geminiWeatherToolsChatClient = geminiWeatherToolsChatClient;
         this.ollamaWeatherToolsChatClient = ollamaWeatherToolsChatClient;
+        this.geminiHelpDeskToolsChatClient = geminiHelpDeskToolsChatClient;
+        this.ollamaHelpDeskToolsChatClient = ollamaHelpDeskToolsChatClient;
 
     }
 
@@ -127,6 +139,30 @@ public class QuestionController {
                 .prompt()
                 .call()
                 .entity(TemperatureResponse.class);
+    }
+
+    @PostMapping("/gemini/ask/help-desk-tools/help-desk")
+    public Answer getGeminiHelpDeskToolAnswer(@RequestHeader("username") String username,
+            @RequestParam("message") String message) {
+        return new Answer(
+            this.geminiHelpDeskToolsChatClient.prompt()
+                .advisors(a -> a.param(ChatMemory.CONVERSATION_ID, username))
+                .user(message)
+                .toolContext(Map.of("username", username))
+                .call().content()
+            );
+    }
+
+    @PostMapping("/ollama/ask/help-desk-tools/help-desk")
+    public Answer getOllamaHelpDeskToolAnswer(@RequestHeader("username") String username,
+            @RequestParam("message") String message) {
+        return new Answer(
+            this.ollamaHelpDeskToolsChatClient.prompt()
+                .advisors(a -> a.param(ChatMemory.CONVERSATION_ID, username))
+                .user(message)
+                .toolContext(Map.of("username", username))
+                .call().content()
+            );
     }
 
 }

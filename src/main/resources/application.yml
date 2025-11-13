@@ -62,6 +62,9 @@ spring:
     h2:
         console:
             enabled: true
+    jpa:
+        hibernate:
+            ddl-auto: update
 logging:
     level:
         org:
