@@ -4,9 +4,11 @@ import java.util.Map;
 
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.memory.ChatMemory;
+import org.springframework.ai.openai.OpenAiAudioTranscriptionModel;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.core.io.Resource;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
@@ -18,6 +20,7 @@ import it.venis.ai.spring.demo.model.Question;
 import it.venis.ai.spring.demo.model.QuestionRequest;
 import it.venis.ai.spring.demo.model.WeatherRequest;
 import it.venis.ai.spring.demo.model.TemperatureResponse;
+import it.venis.ai.spring.demo.services.MultiModalityService;
 import it.venis.ai.spring.demo.services.QuestionService;
 import it.venis.ai.spring.demo.services.RAGService;
 import it.venis.ai.spring.demo.services.TimeToolsService;
@@ -29,6 +32,7 @@ public class QuestionController {
     private final QuestionService service;
     private final RAGService ragService;
     private final TimeToolsService timeToolsService;
+    private final MultiModalityService multiModalityService;
 
     private final ChatClient geminiWeatherToolsChatClient;
     private final ChatClient ollamaWeatherToolsChatClient;
@@ -38,6 +42,7 @@ public class QuestionController {
     public QuestionController(QuestionService service,
             RAGService ragService,
             TimeToolsService timeToolsService,
+            MultiModalityService multiModalityService,
             @Qualifier("geminiWeatherToolsChatClient") ChatClient geminiWeatherToolsChatClient,
             @Qualifier("ollamaWeatherToolsChatClient") ChatClient ollamaWeatherToolsChatClient,
             @Qualifier("geminiHelpDeskToolsChatClient") ChatClient geminiHelpDeskToolsChatClient,
@@ -46,6 +51,7 @@ public class QuestionController {
         this.service = service;
         this.ragService = ragService;
         this.timeToolsService = timeToolsService;
+        this.multiModalityService = multiModalityService;
         this.geminiWeatherToolsChatClient = geminiWeatherToolsChatClient;
         this.ollamaWeatherToolsChatClient = ollamaWeatherToolsChatClient;
         this.geminiHelpDeskToolsChatClient = geminiHelpDeskToolsChatClient;
@@ -164,5 +170,13 @@ public class QuestionController {
                 .call().content()
             );
     }
+
+    @PostMapping("/gemini/ask/multi-modality/transcribe")
+    public Answer postMethodName(@Value("classpath:SpringAI.mp3") Resource audioFile) {
+        
+        return this.multiModalityService.getTranscriptionFromAudioFile(audioFile);
+
+    }
+    
 
 }

@@ -48,6 +48,10 @@ spring:
             embedding:
                 options:
                     model: gemini-embedding-001
+            audio:
+                transcription:
+                    options:
+                        model: gemini-2.5-flash
         vectorstore:
             qdrant:
                 initialize-schema: true
