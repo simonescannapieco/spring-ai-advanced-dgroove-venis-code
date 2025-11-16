@@ -172,7 +172,7 @@ public class QuestionController {
     }
 
     @PostMapping("/gemini/ask/multi-modality/transcribe")
-    public Answer postMethodName(@Value("classpath:SpringAI.mp3") Resource audioFile) {
+    public Answer getTranscriptionFromAudioFile(@Value("classpath:Venis_descrizione_azienda.wav") Resource audioFile) {
         
         return this.multiModalityService.getTranscriptionFromAudioFile(audioFile);
 
