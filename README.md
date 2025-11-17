@@ -8,4 +8,4 @@
 3. Modifica controllore MVC
 4. *Test* delle funzionalità con [Postman](https://github.com/simonescannapieco/spring-ai-advanced-dgroove-venis-code/blob/16-spring-ai-gemini-ollama-multimodality-audio-transcription/doc/Spring%20AI%20-%20Corso%20avanzato.postman_collection.json)/[Insomnia](https://github.com/simonescannapieco/spring-ai-advanced-dgroove-venis-code/blob/16-spring-ai-gemini-ollama-multimodality-audio-transcription/doc/Spring%20AI%20-%20Corso%20avanzato.insomnia_collection.yaml)
 
-Per ulteriori informazioni, si rimanda al [documento di esercitazione](https://github.com/simonescannapieco/spring-ai-advanced-dgroove-venis-slides/blob/master/practice/36_spring_ai_gemini_ollama_multimodality_audio_transcription/out/36_spring_ai_gemini_ollama_multimodality_audio_transcription_handout.pdf).
+Per ulteriori informazioni, si rimanda al [documento di esercitazione](https://github.com/simonescannapieco/spring-ai-advanced-dgroove-venis-slides/blob/master/practice/36_spring_ai_gemini_ollama_multimodality_speech_to_text/out/36_spring_ai_gemini_ollama_multimodality_speech_to_text_handout.pdf).
