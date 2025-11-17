@@ -534,15 +534,9 @@
 			"name": "Domanda trascrizione (speech-to-text)  a Gemini",
 			"request": {
 				"method": "POST",
-				"header": [
-					{
-						"key": "username",
-						"value": "Simone1982",
-						"type": "text"
-					}
-				],
+				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/gemini/ask/help-desk-tools/help-desk?message",
+					"raw": "http://localhost:8080/gemini/ask/multi-modality/transcribe",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -551,14 +545,8 @@
 					"path": [
 						"gemini",
 						"ask",
-						"help-desk-tools",
-						"help-desk"
-					],
-					"query": [
-						{
-							"key": "message",
-							"value": null
-						}
+						"multi-modality",
+						"transcribe"
 					]
 				}
 			},
