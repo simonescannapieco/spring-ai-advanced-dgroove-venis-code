@@ -43,15 +43,11 @@ spring:
             chat:
                 completions-path: /chat/completions
                 options:
-                    model: gemini-2.0-flash-lite
+                    model: gemini-2.5-flash-lite
                     temperature: 2.0
             embedding:
                 options:
                     model: gemini-embedding-001
-            audio:
-                transcription:
-                    options:
-                        model: gemini-2.5-flash
         vectorstore:
             qdrant:
                 initialize-schema: true

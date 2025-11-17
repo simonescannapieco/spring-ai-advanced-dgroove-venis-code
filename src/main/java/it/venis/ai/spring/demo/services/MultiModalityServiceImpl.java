@@ -24,26 +24,24 @@ public class MultiModalityServiceImpl implements MultiModalityService {
 
     @Override
     public Answer getTranscriptionFromAudioFile(Resource audioFile) {
-        
+
         String contentType = getContentType(audioFile);
 
         Media audioMedia = new Media(
-            MimeTypeUtils.parseMimeType(contentType), audioFile
-        );
+                MimeTypeUtils.parseMimeType(contentType), audioFile);
 
         return new Answer(this.geminiChatClient.prompt()
-        .user(u -> u.text("Trascrivi il seguente file audio: ").media(audioMedia))
-        .call()
-        .content()
-        );
-        
+                .user(u -> u.text("Trascrivi il seguente file audio: ").media(audioMedia))
+                .call()
+                .content());
+
     }
 
-    private String getContentType(Resource audioFile) {
-        String contentType = URLConnection.guessContentTypeFromName(audioFile.getFilename());
-        
+    private String getContentType(Resource multimediaFile) {
+        String contentType = URLConnection.guessContentTypeFromName(multimediaFile.getFilename());
+
         if (contentType == null || contentType.equals("application/octet-stream")) {
-            String fileName = audioFile.getFilename();
+            String fileName = multimediaFile.getFilename();
             if (fileName != null) {
                 String extension = fileName.substring(fileName.lastIndexOf('.') + 1).toLowerCase();
                 contentType = switch (extension) {
@@ -52,13 +50,13 @@ public class MultiModalityServiceImpl implements MultiModalityService {
                     case "m4a" -> "audio/mp4";
                     case "ogg" -> "audio/ogg";
                     case "flac" -> "audio/flac";
-                    default -> "audio/mpeg";
+                    default -> "media/unknown";
                 };
             } else {
-                contentType = "audio/mpeg";
+                contentType = "media/unknown";
             }
         }
-        
+
         return contentType;
     }
     
