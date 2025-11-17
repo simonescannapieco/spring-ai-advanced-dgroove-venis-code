@@ -471,6 +471,30 @@ collection:
         send: true
         store: true
       rebuildPath: true
+  - url: http://localhost:8080/gemini/ask/multi-modality/transcribe
+    name: Domanda trascrizione (speech-to-text)  a Gemini
+    meta:
+      id: req_43e9d75bc12a4c74ac71f160c4b7bdda
+      created: 1763302321261
+      modified: 1763373075871
+      isPrivate: false
+      sortKey: -1758017813607.0166
+    method: POST
+    parameters:
+      - id: pair_6ce04fb4318a4a1bb2c9b41ae9cb1e03
+        disabled: false
+    headers:
+      - name: User-Agent
+        value: insomnia/11.0.2
+        id: pair_520636dee03c4479ac11a42815826a1d
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
 cookieJar:
   name: Default Jar
   meta:
