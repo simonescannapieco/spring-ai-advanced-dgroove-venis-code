@@ -1,13 +1,10 @@
 package it.venis.ai.spring.demo.services;
 
-import java.io.IOException;
 import java.net.URLConnection;
-import java.util.Base64;
 
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.content.Media;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
 import org.springframework.util.MimeTypeUtils;
@@ -16,13 +13,6 @@ import it.venis.ai.spring.demo.model.Answer;
 
 @Service
 public class MultiModalityServiceImpl implements MultiModalityService {
-
-    @Value("")
-    private String apiKey;
-
-
-    @Value("${spring.ai.openai.base-url}")
-    private String geminiUrl;
 
     private final ChatClient geminiChatClient;
 
@@ -52,7 +42,6 @@ public class MultiModalityServiceImpl implements MultiModalityService {
     private String getContentType(Resource audioFile) {
         String contentType = URLConnection.guessContentTypeFromName(audioFile.getFilename());
         
-        // Se il content type non è specificato, cerca di dedurlo dall'estensione
         if (contentType == null || contentType.equals("application/octet-stream")) {
             String fileName = audioFile.getFilename();
             if (fileName != null) {
