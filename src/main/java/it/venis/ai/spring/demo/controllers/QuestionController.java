@@ -5,9 +5,7 @@ import java.util.Map;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.memory.ChatMemory;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.io.Resource;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
@@ -31,7 +29,6 @@ public class QuestionController {
     private final QuestionService service;
     private final RAGService ragService;
     private final TimeToolsService timeToolsService;
-    private final MultiModalityService multiModalityService;
 
     private final ChatClient geminiWeatherToolsChatClient;
     private final ChatClient ollamaWeatherToolsChatClient;
@@ -50,7 +47,6 @@ public class QuestionController {
         this.service = service;
         this.ragService = ragService;
         this.timeToolsService = timeToolsService;
-        this.multiModalityService = multiModalityService;
         this.geminiWeatherToolsChatClient = geminiWeatherToolsChatClient;
         this.ollamaWeatherToolsChatClient = ollamaWeatherToolsChatClient;
         this.geminiHelpDeskToolsChatClient = geminiHelpDeskToolsChatClient;
@@ -169,13 +165,5 @@ public class QuestionController {
                 .call().content()
             );
     }
-
-    @PostMapping("/gemini/ask/multi-modality/transcribe")
-    public Answer getTranscriptionFromAudioFile(@Value("classpath:Venis_descrizione_azienda.wav") Resource audioFile) {
-        
-        return this.multiModalityService.getTranscriptionFromAudioFile(audioFile);
-
-    }
-    
 
 }

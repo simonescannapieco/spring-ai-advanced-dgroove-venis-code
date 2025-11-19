@@ -1,7 +1,6 @@
 package it.venis.ai.spring.demo.services;
 
 import java.net.URLConnection;
-
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.content.Media;
 import org.springframework.beans.factory.annotation.Qualifier;
