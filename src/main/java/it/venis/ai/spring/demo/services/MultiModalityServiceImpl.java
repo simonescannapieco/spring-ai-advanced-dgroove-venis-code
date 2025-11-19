@@ -36,6 +36,21 @@ public class MultiModalityServiceImpl implements MultiModalityService {
 
     }
 
+    @Override
+    public Answer getDescriptionFromImage(Resource imageFile) {
+
+        String contentType = getContentType(imageFile);
+
+        Media imageMedia = new Media(
+                MimeTypeUtils.parseMimeType(contentType), imageFile);
+
+        return new Answer(this.geminiChatClient.prompt()
+                .user(u -> u.text("Descrivi in lingua italiana la seguente immagine: ").media(imageMedia))
+                .call()
+                .content());
+
+    }
+
     private String getContentType(Resource multimediaFile) {
         String contentType = URLConnection.guessContentTypeFromName(multimediaFile.getFilename());
 
@@ -58,5 +73,5 @@ public class MultiModalityServiceImpl implements MultiModalityService {
 
         return contentType;
     }
-    
+
 }
