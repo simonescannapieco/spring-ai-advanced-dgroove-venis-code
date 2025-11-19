@@ -43,7 +43,7 @@ spring:
             chat:
                 completions-path: /chat/completions
                 options:
-                    model: gemini-2.5-flash-lite
+                    model: gemini-2.5-flash
                     temperature: 2.0
             embedding:
                 options:
@@ -73,3 +73,7 @@ logging:
                     chat:
                         client:
                             advisor: DEBUG
+gemini:
+    api:
+        models:
+            url: https://generativelanguage.googleapis.com/v1beta/models

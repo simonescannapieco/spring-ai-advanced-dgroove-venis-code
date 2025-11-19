@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gemini Text-to-Speech Demo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            padding: 40px;
+            max-width: 900px;
+            width: 100%;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        h1 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+        }
+        
+        .logo {
+            font-size: 3em;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            color: #666;
+            font-size: 1.1em;
+        }
+        
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+        
+        .tab {
+            padding: 12px 24px;
+            background: none;
+            border: none;
+            color: #666;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border-bottom: 3px solid transparent;
+        }
+        
+        .tab.active {
+            color: #667eea;
+            border-bottom-color: #667eea;
+            font-weight: 600;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            color: #333;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        textarea, select, input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: border-color 0.3s;
+            font-family: inherit;
+        }
+        
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        
+        textarea:focus, select:focus, input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        .row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            width: 100%;
+            margin-top: 10px;
+        }
+        
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.4);
+        }
+        
+        button:active {
+            transform: translateY(0);
+        }
+        
+        button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .secondary-btn {
+            background: #28a745;
+        }
+        
+        .audio-player {
+            margin-top: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 12px;
+            display: none;
+        }
+        
+        .audio-player.show {
+            display: block;
+        }
+        
+        audio {
+            width: 100%;
+            margin-top: 10px;
+        }
+        
+        .loading {
+            display: none;
+            text-align: center;
+            margin: 20px 0;
+        }
+        
+        .loading.show {
+            display: block;
+        }
+        
+        .spinner {
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #667eea;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .message {
+            padding: 12px;
+            border-radius: 8px;
+            margin-top: 15px;
+            display: none;
+        }
+        
+        .message.show {
+            display: block;
+        }
+        
+        .message.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .message.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        
+        .info-box {
+            background: #e7f3ff;
+            border-left: 4px solid #2196F3;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+        }
+        
+        .info-box h4 {
+            color: #1976D2;
+            margin-bottom: 8px;
+        }
+        
+        .speaker-config {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+        
+        .voice-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #667eea;
+            color: white;
+            border-radius: 20px;
+            font-size: 12px;
+            margin-right: 8px;
+            margin-top: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">🎤</div>
+            <h1>Gemini TTS Demo</h1>
+            <p class="subtitle">Sintesi vocale nativa con Gemini 2.5</p>
+        </div>
+        
+        <div class="info-box">
+            <h4>ℹ️ Informazioni</h4>
+            <p>Gemini 2.5 offre capacità TTS native con controllo dello stile tramite linguaggio naturale.</p>
+        </div>
+        
+        <div class="tabs">
+            <button class="tab active" onclick="switchTab('single')">Single Speaker</button>
+            <!-- <button class="tab" onclick="switchTab('multi')">Multi-Speaker</button> -->
+        </div>
+        
+        <!-- Single Speaker Tab -->
+        <div id="single-tab" class="tab-content active">
+            <div class="form-group">
+                <label for="text">Testo da convertire:</label>
+                <textarea id="text" placeholder="Inserisci il testo da convertire in audio...">Benvenuto nel servizio di sintesi vocale Gemini. Questa tecnologia utilizza intelligenza artificiale avanzata per creare voci naturali e realistiche.</textarea>
+            </div>
+            
+            <div class="form-group">
+                <label for="voice">Voce:</label>
+                <select id="voice">
+                    <option value="Puck">Puck - Versatile, uso generale</option>
+                    <option value="Charon">Charon - Professionale, chiara</option>
+                    <option value="Kore">Kore - Calda, amichevole</option>
+                    <option value="Fenrir">Fenrir - Decisa, autorevole</option>
+                    <option value="Aoede">Aoede - Espressiva, dinamica</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="stylePrompt">Style Prompt (opzionale):</label>
+                <input type="text" id="stylePrompt" placeholder="Es: Narrate in a calm, professional tone">
+                <small style="color: #666; font-size: 12px; display: block; margin-top: 5px;">
+                    Usa il linguaggio naturale per controllare stile, accento, tono ed emozione
+                </small>
+            </div>
+            
+            <button onclick="generateSpeech()">🔊 Genera Audio</button>
+            <!-- <button onclick="downloadAudio()" class="secondary-btn">💾 Scarica Audio</button> -->
+        </div>
+        
+        <!-- Multi-Speaker Tab -->
+        <div id="multi-tab" class="tab-content">
+            <div class="form-group">
+                <label for="conversation">Conversazione:</label>
+                <textarea id="conversation" placeholder="Formato: Nome1: Testo... Nome2: Testo...">Marco: Ciao Laura, come stai oggi?
+Laura: Molto bene grazie! E tu?
+Marco: Tutto bene, grazie per avermelo chiesto.
+Laura: Perfetto! Hai visto il nuovo progetto?
+Marco: Sì, è davvero interessante!</textarea>
+            </div>
+            
+            <div class="speaker-config">
+                <h4 style="margin-bottom: 15px;">Configurazione Speaker</h4>
+                <div class="row">
+                    <div class="form-group">
+                        <label for="speaker1Name">Nome Speaker 1:</label>
+                        <input type="text" id="speaker1Name" value="Marco">
+                    </div>
+                    <div class="form-group">
+                        <label for="speaker1Voice">Voce Speaker 1:</label>
+                        <select id="speaker1Voice">
+                            <option value="Fenrir">Fenrir</option>
+                            <option value="Puck">Puck</option>
+                            <option value="Charon">Charon</option>
+                            <option value="Kore">Kore</option>
+                            <option value="Aoede">Aoede</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <label for="speaker2Name">Nome Speaker 2:</label>
+                        <input type="text" id="speaker2Name" value="Laura">
+                    </div>
+                    <div class="form-group">
+                        <label for="speaker2Voice">Voce Speaker 2:</label>
+                        <select id="speaker2Voice">
+                            <option value="Aoede">Aoede</option>
+                            <option value="Puck">Puck</option>
+                            <option value="Charon">Charon</option>
+                            <option value="Kore">Kore</option>
+                            <option value="Fenrir">Fenrir</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            
+            <button onclick="generateConversation()">🔊 Genera Conversazione</button>
+        </div>
+        
+        <div class="loading" id="loading">
+            <div class="spinner"></div>
+            <p style="margin-top: 10px; color: #666;">Generazione audio in corso...</p>
+        </div>
+        
+        <div class="message" id="message"></div>
+        
+        <div class="audio-player" id="audioPlayer">
+            <h3 style="color: #333; margin-bottom: 10px;">🎵 Audio Generato</h3>
+            <audio id="audio" controls></audio>
+            <div style="margin-top: 15px;">
+                <span class="voice-badge">Gemini 2.5</span>
+                <span class="voice-badge">Native TTS</span>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        const API_URL = 'http://localhost:8080/gemini/multi-modality/tts';
+        
+        function switchTab(tab) {
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+            
+            if (tab === 'single') {
+                document.querySelector('.tab:first-child').classList.add('active');
+                document.getElementById('single-tab').classList.add('active');
+            } else {
+                document.querySelector('.tab:last-child').classList.add('active');
+                document.getElementById('multi-tab').classList.add('active');
+            }
+        }
+        
+        async function generateSpeech() {
+            const text = document.getElementById('text').value;
+            const voice = document.getElementById('voice').value;
+            const stylePrompt = document.getElementById('stylePrompt').value;
+            
+            if (!text.trim()) {
+                showMessage('Il testo non può essere vuoto!', 'error');
+                return;
+            }
+            
+            showLoading(true);
+            hideMessage();
+            hideAudioPlayer();
+            
+            const requestBody = {
+                text: text,
+                voice: voice
+            };
+            
+            if (stylePrompt) {
+                requestBody.stylePrompt = stylePrompt;
+            }
+            
+            try {
+                const response = await fetch(`${API_URL}/generate`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(requestBody)
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok && data.audioBase64) {
+                    const audioElement = document.getElementById('audio');
+                    audioElement.src = `data:audio/wav;base64,${data.audioBase64}`;
+                    
+                    showAudioPlayer();
+                    showMessage(data.message || 'Audio generato con successo!', 'success');
+                } else {
+                    showMessage(data.message || 'Errore nella generazione dell\'audio', 'error');
+                }
+            } catch (error) {
+                showMessage('Errore di connessione al server: ' + error.message, 'error');
+            } finally {
+                showLoading(false);
+            }
+        }
+        
+        async function generateConversation() {
+            const conversation = document.getElementById('conversation').value;
+            const speaker1Name = document.getElementById('speaker1Name').value;
+            const speaker1Voice = document.getElementById('speaker1Voice').value;
+            const speaker2Name = document.getElementById('speaker2Name').value;
+            const speaker2Voice = document.getElementById('speaker2Voice').value;
+            
+            if (!conversation.trim()) {
+                showMessage('La conversazione non può essere vuota!', 'error');
+                return;
+            }
+            
+            showLoading(true);
+            hideMessage();
+            hideAudioPlayer();
+            
+            const requestBody = {
+                conversation: conversation,
+                speakers: [
+                    { name: speaker1Name, voice: speaker1Voice },
+                    { name: speaker2Name, voice: speaker2Voice }
+                ]
+            };
+            
+            try {
+                const response = await fetch(`${API_URL}/generate-conversation`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(requestBody)
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok && data.audioBase64) {
+                    const audioElement = document.getElementById('audio');
+                    audioElement.src = `data:audio/wav;base64,${data.audioBase64}`;
+                    
+                    showAudioPlayer();
+                    showMessage(data.message || 'Conversazione generata con successo!', 'success');
+                } else {
+                    showMessage(data.message || 'Errore nella generazione', 'error');
+                }
+            } catch (error) {
+                showMessage('Errore: ' + error.message, 'error');
+            } finally {
+                showLoading(false);
+            }
+        }
+        
+        async function downloadAudio() {
+            const text = document.getElementById('text').value;
+            const voice = document.getElementById('voice').value;
+            
+            if (!text.trim()) {
+                showMessage('Il testo non può essere vuoto!', 'error');
+                return;
+            }
+            
+            showLoading(true);
+            hideMessage();
+            
+            const requestBody = {
+                text: text,
+                voice: voice
+            };
+            
+            try {
+                const response = await fetch(`${API_URL}/download`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(requestBody)
+                });
+                
+                if (response.ok) {
+                    const blob = await response.blob();
+                    const url = window.URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = 'gemini-speech.wav';
+                    document.body.appendChild(a);
+                    a.click();
+                    window.URL.revokeObjectURL(url);
+                    document.body.removeChild(a);
+                    
+                    showMessage('File scaricato con successo!', 'success');
+                } else {
+                    showMessage('Errore nel download', 'error');
+                }
+            } catch (error) {
+                showMessage('Errore: ' + error.message, 'error');
+            } finally {
+                showLoading(false);
+            }
+        }
+        
+        function showLoading(show) {
+            const loading = document.getElementById('loading');
+            loading.classList.toggle('show', show);
+        }
+        
+        function showMessage(text, type) {
+            const message = document.getElementById('message');
+            message.textContent = text;
+            message.className = `message ${type} show`;
+        }
+        
+        function hideMessage() {
+            document.getElementById('message').classList.remove('show');
+        }
+        
+        function showAudioPlayer() {
+            document.getElementById('audioPlayer').classList.add('show');
+        }
+        
+        function hideAudioPlayer() {
+            document.getElementById('audioPlayer').classList.remove('show');
+        }
+    </script>
+</body>
+</html>
