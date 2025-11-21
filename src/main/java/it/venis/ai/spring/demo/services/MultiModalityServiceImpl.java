@@ -64,6 +64,10 @@ public class MultiModalityServiceImpl implements MultiModalityService {
                     case "m4a" -> "audio/mp4";
                     case "ogg" -> "audio/ogg";
                     case "flac" -> "audio/flac";
+                    case "jpg" -> "image/jpeg";
+                    case "jpeg" -> "image/jpeg";
+                    case "png" -> "image/png";
+                    case "raw" -> "image/raw";
                     default -> "media/unknown";
                 };
             } else {
