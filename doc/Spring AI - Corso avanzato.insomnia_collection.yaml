@@ -471,12 +471,12 @@ collection:
         send: true
         store: true
       rebuildPath: true
-  - url: http://localhost:8080/gemini/ask/multi-modality/transcribe
-    name: Domanda trascrizione (speech-to-text)  a Gemini
+  - url: http://localhost:8080/gemini/multi-modality/stt
+    name: Domanda STT  a Gemini
     meta:
       id: req_43e9d75bc12a4c74ac71f160c4b7bdda
       created: 1763302321261
-      modified: 1763373075871
+      modified: 1763997518816
       isPrivate: false
       sortKey: -1758017813607.0166
     method: POST

@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "70b67ce1-2c2e-45a8-ac7f-2d20e8c7f0ef",
+		"_postman_id": "ecf76174-f139-41d0-818c-e3e2ecd28274",
 		"name": "Spring AI - Corso avanzato",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "8264677"
@@ -531,12 +531,12 @@
 			"response": []
 		},
 		{
-			"name": "Domanda trascrizione (speech-to-text)  a Gemini",
+			"name": "Domanda STT a Gemini",
 			"request": {
 				"method": "POST",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/gemini/ask/multi-modality/transcribe",
+					"raw": "http://localhost:8080/gemini/multi-modality/stt",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -544,9 +544,8 @@
 					"port": "8080",
 					"path": [
 						"gemini",
-						"ask",
 						"multi-modality",
-						"transcribe"
+						"stt"
 					]
 				}
 			},
