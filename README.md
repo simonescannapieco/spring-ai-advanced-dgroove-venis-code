@@ -1,11 +1,14 @@
 # Spring AI
 ## Generative Artificial Intelligence con Java - Corso avanzato
 
-### Multimodalità: Servizio *speech-to-text* Gemini 
+### Multimodalità: Servizio *text-to-speech* Gemini 
 
-1. Modifica configurazione di sistema
-2. Creazione interfaccia ed implementazione del servizio
-3. Modifica controllore MVC
-4. *Test* delle funzionalità con [Postman](https://github.com/simonescannapieco/spring-ai-advanced-dgroove-venis-code/blob/16-spring-ai-gemini-ollama-multimodality-audio-transcription/doc/Spring%20AI%20-%20Corso%20avanzato.postman_collection.json)/[Insomnia](https://github.com/simonescannapieco/spring-ai-advanced-dgroove-venis-code/blob/16-spring-ai-gemini-ollama-multimodality-audio-transcription/doc/Spring%20AI%20-%20Corso%20avanzato.insomnia_collection.yaml)
+1. Modifica dipendenze di progetto
+2. Creazione modelli Gemini TTS \textit{request} e \textit{response}
+3. Creazione modello per informazioni voci disponibili
+4. Creazione convertitore \textit{output} audio Gemini a formato riproducibile nel \textit{web}
+5. Modifica controllore MVC
+6. Creazione pagina di presentazione
+7. *Test* delle funzionalità su pagina di presentazione
 
-Per ulteriori informazioni, si rimanda al [documento di esercitazione](https://github.com/simonescannapieco/spring-ai-advanced-dgroove-venis-slides/blob/master/practice/36_spring_ai_gemini_ollama_multimodality_speech_to_text/out/36_spring_ai_gemini_ollama_multimodality_speech_to_text_handout.pdf).
+Per ulteriori informazioni, si rimanda al [documento di esercitazione](https://github.com/simonescannapieco/spring-ai-advanced-dgroove-venis-slides/blob/master/practice/38_spring_ai_gemini_ollama_multimodality_text_to_speech/out/38_spring_ai_gemini_ollama_multimodality_text_to_speech_handout.pdf).
